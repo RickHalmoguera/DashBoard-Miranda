@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContactStyled = styled.div`
+export const ContactPageStyled = styled.div`
     padding: 3em;
     height: 100%;
     display: flex;
@@ -10,7 +10,7 @@ export const ContactStyled = styled.div`
     background-color: ${props =>props.theme.rootBg};
 `
 
-export const ContactTopContainerStyled = styled.div`
+export const ContactPageTopContainerStyled = styled.div`
    display: flex;
     flex-direction: column; 
     justify-content: center;
