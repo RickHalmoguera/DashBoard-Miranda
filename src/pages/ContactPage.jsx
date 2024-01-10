@@ -46,6 +46,7 @@ export const ContactPage = ()=>{
                     <option value="newest">Newest</option>
                     <option value="oldest">Oldest</option>
                 </SelectButtonStyled>
+                
             </TableTopContainerContainerStyled>
 
             <TableContact isFiltered={isFiltered} selectedSortOption={selectedSortOption}/>

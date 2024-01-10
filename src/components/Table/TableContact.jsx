@@ -77,7 +77,7 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
     } else if (commentsListStatus === "fulfilled") {
       const newFilteredCommentList = isFiltered
         ? commentsListData.filter((comment) => comment.is_archived === true)
-        : commentsListData.filter((comment) => comment.is_archived === false);
+        : commentsListData.filter((comment) => comment.is_archived === false|| true) ;
       
         if (selectedSortOption === "newest") {
           newFilteredCommentList.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -108,23 +108,23 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
         <tbody>
           {displayedComments.map((comment) => (
             <TrStyled key={comment._id}>
-              <TdStyled>
+              <td>
                 <TdHeadind>{FormatDate(comment.date)}</TdHeadind>
                 <TdIdText># {comment._id}</TdIdText>
-              </TdStyled>
+              </td>
 
-              <TdStyled>
-                <TdHeadind>{comment.name}</TdHeadind>
+              <td>
+                <TdHeadind>{comment.name} {comment.surname}</TdHeadind>
                 <TdText>{comment.email}</TdText>
                 <TdSubText>{comment.phone}</TdSubText>
-              </TdStyled>
+              </td>
 
               <td>
                 <TdHeadind>{comment.subject}</TdHeadind>
                 <TdText>{comment.message}</TdText>
               </td>
               <TdBtnStyled>
-                <TableUserBtn onClick={() => handleStatusChange(comment.id)} 
+                <TableUserBtn onClick={() => handleStatusChange(comment._id)} 
                   $color={comment.is_archived?"#5AD07A":"#E23428"}
                 >
                   {comment.is_archived?"Publish":"Archive"}

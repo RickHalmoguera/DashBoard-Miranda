@@ -15,7 +15,6 @@ export const getCommentsListFromAPIThunk = createAsyncThunk("comments/getComment
             throw new RequestError(response.status,"")
         }
         const json = await response.json()
-        console.log(json)
         return json
     } catch(e){
         console.error("Error in getLoginTokenThunk:", e)
