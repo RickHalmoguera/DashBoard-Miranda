@@ -15,6 +15,7 @@ import { ButtonFormStyled } from "../components/Button/ButtonStyled"
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "../context/AuthContext"
+import { getLoginTokenThunk } from "../features/login/getloginTokenThunk"
 
 export const LoginPage = ()=>{
     const { login } = useAuth();
@@ -27,15 +28,19 @@ export const LoginPage = ()=>{
     
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit =  (e) => {
         e.preventDefault()
-        const user = e.target.user.value
+        const email = e.target.user.value
         const password = e.target.password.value
-        if (user !== 'test@test.com' || password !== 'test') {
-        loginError()
+        if (email !== 'test@test.com' || password !== 'test') {
+            loginError()
+        
         } else {
-        login()
-        navigate('/root/dashboard')
+            const bodyData=JSON.stringify({email:email, password : password})
+            console.log(bodyData)
+            login()
+            dispatch(getLoginTokenThunk(bodyData))
+            navigate('/root/dashboard')
         }
     }
   const loginError = () =>{

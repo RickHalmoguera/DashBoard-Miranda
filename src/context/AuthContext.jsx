@@ -12,13 +12,13 @@ export const AuthProvider = ({ children }) => {
   )
 
   const login = () => {
-    console.log("login")
     localStorage.setItem('isLoggedIn', 'true')
     setLoggedIn(true)
   }
 
   const logout = () => {
     localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('token')
     setLoggedIn(false)
   }
 

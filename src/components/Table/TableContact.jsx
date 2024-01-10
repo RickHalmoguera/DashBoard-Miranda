@@ -107,10 +107,10 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
         </thead>
         <tbody>
           {displayedComments.map((comment) => (
-            <TrStyled key={comment.id}>
+            <TrStyled key={comment._id}>
               <TdStyled>
                 <TdHeadind>{FormatDate(comment.date)}</TdHeadind>
-                <TdIdText># {comment.id}</TdIdText>
+                <TdIdText># {comment._id}</TdIdText>
               </TdStyled>
 
               <TdStyled>
@@ -120,8 +120,8 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
               </TdStyled>
 
               <td>
-                <TdHeadind>{comment.title}</TdHeadind>
-                <TdText>{comment.text}</TdText>
+                <TdHeadind>{comment.subject}</TdHeadind>
+                <TdText>{comment.message}</TdText>
               </td>
               <TdBtnStyled>
                 <TableUserBtn onClick={() => handleStatusChange(comment.id)} 
