@@ -6,6 +6,7 @@ import { TopBarIconsContainerStyled } from "./TopBarIconsContainerStyled";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MoonStyledIcon, SunStyledIcon } from "../Icons/IconsStyled"
 import { ThemeSelectorStyled } from "../ThemeSelector/ThemeSelectorStyled";
+import { useAuth } from "../../context/AuthContext";
 
 
 const routePageMapping = {
@@ -20,6 +21,7 @@ const routePageMapping = {
 };
 
 export const TopBar = ({ onToggleMenu, isMenuOpen }) => {
+    const { logout } = useAuth();
     const themeData = useSelector(getTheme)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -31,6 +33,7 @@ export const TopBar = ({ onToggleMenu, isMenuOpen }) => {
     }
 
     const handleLogOut = ()=>{
+        logout()
         navigate("/")
     }
     

@@ -14,15 +14,17 @@ import { FormStyled, InputStyled, LabelStyled } from "../components/Form/FormSty
 import { ButtonFormStyled } from "../components/Button/ButtonStyled"
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from "../context/AuthContext"
 
 export const LoginPage = ()=>{
+    const { login } = useAuth();
     const dispatch = useDispatch()
     const themeData = useSelector(getTheme)
     const navigate = useNavigate()
 
   const handleThemeChange = () => {
     dispatch(changeTheme())
-    console.log(themeData)
+    
     }
 
     const handleSubmit = (e) => {
@@ -32,6 +34,7 @@ export const LoginPage = ()=>{
         if (user !== 'test@test.com' || password !== 'test') {
         loginError()
         } else {
+        login()
         navigate('/root/dashboard')
         }
     }
