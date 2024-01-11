@@ -7,9 +7,13 @@ import { InputStyled } from "../components/Form/FormStyled";
 import { SelectButtonStyled } from "../components/Button/SelectButtonStyled";
 import { ButtonStyled } from "../components/Button/ButtonStyled";
 import { TableTopButtonContainerStyled } from "../components/Table/TableTopButtonContainer";
+import { TableUser } from "../components/Table/TableUser";
+
 
 export const UsersPage = ()=>{
+    const [searchName, setSearchName] = useState("")
     const [selectedSortOption, setSelectedSortOption] = useState("newest");
+    const [filterOption,setFilterOption] = useState("all")
     const handleSort = (e) => {
         const selectedOption = e.target.value;
         setSelectedSortOption(selectedOption);
@@ -37,13 +41,13 @@ export const UsersPage = ()=>{
                     </ButtonStyled>
                     <SelectButtonStyled onChange={handleSort} value={selectedSortOption}>
                         <option value="newest">Newest</option>
-                        <option value="oldest">Oldest</option>
+                        <option value="abc">A-Z</option>
                     </SelectButtonStyled>
                 </TableTopButtonContainerStyled>
 
             </TableTopContainerContainerStyled>
 
-            
+           <TableUser FilterOption={filterOption} selectedSortOption={selectedSortOption} SearchName={searchName} />
         </UsersPageStyled>
     )
 }

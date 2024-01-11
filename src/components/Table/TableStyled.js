@@ -24,6 +24,12 @@ export const TdUserCardStyled = styled.td`
     }
 
 `
+export const TableUserImg = styled.img`
+    width: 5.6rem;
+    height: 5.6rem;
+    border-radius: 1em;
+`
+
 export const TrStyled = styled.tr `
     &:hover{
         box-shadow: 0px 4px 30px #0000001A
@@ -105,4 +111,22 @@ export const PaginationText = styled.p`
     font-weight: 400;
     line-height: 2.5rem;
     color: ${props =>props.theme.text};
+`
+
+export const UserNotFoundContainer = styled.div `
+    height: 21px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2.1rem;
+    color: ${props =>props.theme.idText};
+`
+
+
+export const UserNotFoundText = styled.p `
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2.1rem;
+    color: ${props =>props.theme.idText};
 `

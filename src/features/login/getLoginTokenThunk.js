@@ -18,7 +18,6 @@ export const getLoginTokenThunk = createAsyncThunk("login/getLoginToken", async 
         }
         const json = await response.json()
         localStorage.setItem("token", json.token);
-        console.log(json.token)
         return json
     } catch(e){
         console.error("Error in getLoginTokenThunk:", e)
