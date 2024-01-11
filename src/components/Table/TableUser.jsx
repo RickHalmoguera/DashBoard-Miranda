@@ -54,7 +54,7 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
     } else if (usersListStatus === "pending") {
       setSpinner(true);
     } else if (usersListStatus === "fulfilled") {
-
+      
       if(FilterOption ==="active"){
         newFilteredUsersList = usersListData.filter((user) => user.is_active === true )
       }else if(FilterOption ==="inactive"){
@@ -77,6 +77,7 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
       setFilteredUsersList(newFilteredUsersList)
       setSpinner(false)
       setCurrentPage(1)
+      console.log(filteredUsersList)
     }
 
   },[dispatch, usersListData, usersListStatus, FilterOption,selectedSortOption, SearchName])
@@ -106,6 +107,7 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
                 <div>
                     <TdHeadind>{user.name} {user.surname}</TdHeadind>
                     <TdIdText># {user._id}</TdIdText>
+                    <TdSubText>{user.email}</TdSubText>
                     <TdSubText>{FormatDate(user.startDate)}</TdSubText>
                 </div>
               </TdUserCardStyled>
