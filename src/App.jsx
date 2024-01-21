@@ -9,6 +9,7 @@ import { RootPage } from "./pages/RootPage"
 import { ContactPage } from "./pages/ContactPage"
 import { UsersPage } from "./pages/UsersPage"
 import { useAuth } from "./context/AuthContext"
+import { NewUserPage } from "./pages/NewUserPage"
 
 function App() {
   const themeData = useSelector(getTheme)
@@ -23,7 +24,9 @@ function App() {
               <Route path='/root' element={<RootPage />}>
                   <Route path='/root/dashboard' element={<DashBoardPage />} />
                   <Route path='/root/contact' element={<ContactPage />} />
-                  <Route path='/root/users' element={<UsersPage />} />
+                  <Route path='/root/users' element={<UsersPage />}/>
+                  <Route path="/root/users/newuser" element={<NewUserPage/>}/>
+                  
               </Route>
             ) : (
               <Route path='*' element={<Navigate to='/' />} />

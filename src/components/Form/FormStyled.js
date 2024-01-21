@@ -5,19 +5,22 @@ export const FormStyled = styled.form`
     display: flex;
     gap: 1em;
     flex-direction: column;
+    margin:  0 auto ;
+    width: 50rem;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 `
 
 export const InputStyled = styled.input`
-        height: 3.5rem; 
-        border: 2px solid #135846;
-        border-radius: 8px ;
-        padding: 1em;
-        background-color:${props =>props.theme.inputBg};
-        text-align:left;
-        font-size: 1.6rem;
-        color:${props =>props.theme.text}
+    width: 100%;
+    height: 3.5rem; 
+    border: 2px solid #135846;
+    border-radius: 8px ;
+    padding: 1em;
+    background-color:${props =>props.theme.inputBg};
+    text-align:left;
+    font-size: 1.6rem;
+    color:${props =>props.theme.text}
 `
 
 export const LabelStyled = styled.label`
@@ -26,4 +29,15 @@ export const LabelStyled = styled.label`
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 3rem;   
+`
+
+export const TextAreaStyled = styled.textarea `
+    width: 100%;
+    border: 2px solid #135846;
+    border-radius: 8px ;
+    padding: 1em;
+    background-color:${props =>props.theme.inputBg};
+    text-align:left;
+    font-size: 1.6rem;
+    color:${props =>props.theme.text}
 `

@@ -8,9 +8,10 @@ import { SelectButtonStyled } from "../components/Button/SelectButtonStyled";
 import { ButtonStyled } from "../components/Button/ButtonStyled";
 import { TableTopButtonContainerStyled } from "../components/Table/TableTopButtonContainer";
 import { TableUser } from "../components/Table/TableUser";
-
+import { useNavigate } from 'react-router-dom';
 
 export const UsersPage = ()=>{
+    const navigate = useNavigate()
     const [searchName, setSearchName] = useState("")
     const [selectedSortOption, setSelectedSortOption] = useState("newest");
     const [filterOption,setFilterOption] = useState("all")
@@ -36,7 +37,7 @@ export const UsersPage = ()=>{
                 </FilterContainerStyled>
 
                 <TableTopButtonContainerStyled>
-                    <ButtonStyled>
+                    <ButtonStyled onClick={()=> navigate('/root/users/newuser')}>
                         + New User
                     </ButtonStyled>
                     <SelectButtonStyled onChange={handleSort} value={selectedSortOption}>

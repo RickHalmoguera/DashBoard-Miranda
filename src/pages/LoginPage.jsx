@@ -15,7 +15,8 @@ import { ButtonFormStyled } from "../components/Button/ButtonStyled"
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "../context/AuthContext"
-import { getLoginTokenThunk } from "../features/login/getloginTokenThunk"
+import { getLoginTokenThunk } from "../features/login/getLoginTokenThunk"
+
 
 export const LoginPage = ()=>{
     const { login } = useAuth();

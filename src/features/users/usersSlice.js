@@ -15,6 +15,13 @@ export const UsersSlice = createSlice({
   
       
     },
+
+    reducers:{
+    
+        addUser: (state,action) => {
+        state.data = [action.payload,...state.data]
+        }
+    },
     extraReducers: (builder) => {
         builder.addCase(getUsersListFromAPIThunk.fulfilled, (state,action) => {
             state.status = "fulfilled"
@@ -33,7 +40,7 @@ export const UsersSlice = createSlice({
     }
 });
 
-
+export const  {addUser} = UsersSlice.actions
 export const getUsersById = (state) => state.users.data.filter((comment) => comment.id === state.users.modalId)
 export const getUsersId = (state)  => state.users.modalId
 export const getUsersData = (state) => state.users.data;

@@ -1,4 +1,4 @@
-import { PaginationContainerStyled, PaginationText, TableStyled, TableUserBtn, TableUserImg, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdStyled, TdSubText, TdText, TdUserCardStyled, TrHeadStyled, TrStyled, UserNotFoundContainer, UserNotFoundText } from './TableStyled';
+import { PaginationContainerStyled, PaginationText, TableStyled, TableUserBtn, TableUserImg, TableUsersStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdStyled, TdSubText, TdText, TdUserCardStyled, TrHeadStyled, TrStyled, UserNotFoundContainer, UserNotFoundText } from './TableStyled';
 import { DotsStyledIcon, PhoneStyledIcon } from '../../components/Icons/IconsStyled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsersData, getUsersError, getUsersStatus } from '../../features/users/usersSlice';
@@ -89,7 +89,7 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
           <UserNotFoundText>No users found.</UserNotFoundText>
         )}
       </UserNotFoundContainer>
-      <TableStyled>
+      <TableUsersStyled>
         <thead>
           <tr>
             <TrHeadStyled>Employee</TrHeadStyled>
@@ -131,7 +131,7 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
             </TrStyled>
           ))}
         </tbody>
-      </TableStyled>
+      </TableUsersStyled>
 
       <PaginationContainerStyled>
         <PaginationText>

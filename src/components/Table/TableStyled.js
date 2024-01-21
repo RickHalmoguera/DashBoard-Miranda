@@ -12,6 +12,19 @@ export const TableStyled = styled.table`
     background-color: ${props =>props.theme.bodyBg};
 `
 
+export const TableUsersStyled = styled.table`
+    margin: 3em 0;
+    width: 100%;
+    min-height: 750px;
+    background-color: #FFF;
+    border-radius: 1em;
+    text-align: left;
+    padding: 1em;
+    border-spacing: 1rem 2em;
+    height: 50rem;
+    background-color: ${props =>props.theme.bodyBg};
+`
+
 export const TdUserCardStyled = styled.td`
     width:30rem ;
     display: flex;
