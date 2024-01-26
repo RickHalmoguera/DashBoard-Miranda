@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify'
 import {
   PaginationContainerStyled,
   PaginationText,
@@ -7,7 +8,6 @@ import {
   TdBtnStyled,
   TdHeadind,
   TdIdText,
-  TdStyled,
   TdSubText,
   TdText,
   TrHeadStyled,
@@ -25,6 +25,7 @@ import {
 
 import { getCommentsListFromAPIThunk } from "../../features/comments/commentsThunk";
 import { ButtonStyled } from "../Button/ButtonStyled";
+import { getTheme } from "../../features/theme/themeSlice"
 
 export const TableContact = ({ isFiltered, selectedSortOption }) => {
   const dispatch = useDispatch()
@@ -32,6 +33,7 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
   const commentsListError = useSelector(getCommentsError)
   const commentsListStatus = useSelector(getCommentsStatus)
   const [spinner, setSpinner] = useState(true)
+  const themeData = useSelector(getTheme)
 
 
   const itemsPerPage = 2;
@@ -43,6 +45,17 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
   const totalPages = Math.ceil(filteredCommentList.length / itemsPerPage);
 
   const handleStatusChange =(id)=>{
+    const theme = themeData? "dark" : "light"
+    toast.success('Comment updated!', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: theme,
+      });
     dispatch(changeCommentStatus(id))
   }
   
@@ -95,6 +108,7 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
 
   return (
     <>
+      <ToastContainer/>
       <TableStyled>
         <thead>
           <tr>
@@ -107,24 +121,24 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
         </thead>
         <tbody>
           {displayedComments.map((comment) => (
-            <TrStyled key={comment._id}>
+            <TrStyled key={comment.id}>
               <td>
                 <TdHeadind>{FormatDate(comment.date)}</TdHeadind>
-                <TdIdText># {comment._id}</TdIdText>
+                <TdIdText># {comment.id}</TdIdText>
               </td>
 
               <td>
-                <TdHeadind>{comment.name} {comment.surname}</TdHeadind>
+                <TdHeadind>{comment.first_name} {comment.last_name}</TdHeadind>
                 <TdText>{comment.email}</TdText>
                 <TdSubText>{comment.phone}</TdSubText>
               </td>
 
               <td>
-                <TdHeadind>{comment.subject}</TdHeadind>
-                <TdText>{comment.message}</TdText>
+                <TdHeadind>{comment.title}</TdHeadind>
+                <TdText>{comment.text}</TdText>
               </td>
               <TdBtnStyled>
-                <TableUserBtn onClick={() => handleStatusChange(comment._id)} 
+                <TableUserBtn onClick={() => handleStatusChange(comment.id)} 
                   $color={comment.is_archived?"#5AD07A":"#E23428"}
                 >
                   {comment.is_archived?"Publish":"Archive"}

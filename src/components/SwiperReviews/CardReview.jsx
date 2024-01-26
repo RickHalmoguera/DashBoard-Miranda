@@ -32,13 +32,13 @@ export const CardReview = ({comment})=>{
         <>
             <CardReviewStyled>
                 
-                <CommentText onClick={()=>openModal(comment._id)} >
-                    {comment.message}
+                <CommentText onClick={()=>openModal(comment.id)} >
+                    {comment.text}
                 </CommentText>
                 
                 <CardReviewUserContainer >
-                    <UserImg src={comment.userImg} alt="Profile pic" />
-                    <UserName>{comment.name} <br /><ReviewTime>{elapsedTime}</ReviewTime></UserName>
+                    <UserImg src={comment.photo} alt="Profile pic" />
+                    <UserName>{comment.first_name} {comment.last_name} <br /><ReviewTime>{elapsedTime}</ReviewTime></UserName>
                     <XCircleStyledIcon />
                 </CardReviewUserContainer>
                 

@@ -16,10 +16,10 @@ export const CommentSlice = createSlice({
        
         changeCommentStatus: (state,action)=>{
             const commentToArchive = action.payload
-            const updatedStatus = state.data.map((item)=> item._id === commentToArchive ? {...item,is_archived:!item.is_archived} : item) 
+            const updatedStatus = state.data.map((item)=> item.id === commentToArchive ? {...item,is_archived:!item.is_archived} : item) 
             state.data = updatedStatus 
         },
-       setModalCommentId: (state,action) => {
+        setModalCommentId: (state,action) => {
         console.log(action.payload)
         state.modalId = action.payload
         },

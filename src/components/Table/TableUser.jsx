@@ -77,7 +77,6 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
       setFilteredUsersList(newFilteredUsersList)
       setSpinner(false)
       setCurrentPage(1)
-      console.log(filteredUsersList)
     }
 
   },[dispatch, usersListData, usersListStatus, FilterOption,selectedSortOption, SearchName])

@@ -12,7 +12,6 @@ export const Modal = ()=>{
 
     return(
         <ModalStyled>
-            {console.log(comment)}
             <ModalContainerStyled>
                 <ModalTitle>{comment[0].title}</ModalTitle>
                 <ModalText>{comment[0].text}</ModalText>
