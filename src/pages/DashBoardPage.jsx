@@ -10,6 +10,7 @@ export const DashBoardPage = ()=>{
 
     return(
         <DashBoardStyled>
+             
             <DashBoardTopContainerStyled>
                 <KpiCard Icon={BedStyledIcon} number={8461} text="New Booking"/>
                 <KpiCard Icon={CalendarDashStyledIcon} number={963} text="Scheduled Rooms"/>

@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { MoonStyledIcon, SunStyledIcon } from "../Icons/IconsStyled"
 import { ThemeSelectorStyled } from "../ThemeSelector/ThemeSelectorStyled";
 import { useAuth } from "../../context/AuthContext";
+import { ToastContainer } from 'react-toastify'
 
 
 const routePageMapping = {
@@ -39,6 +40,7 @@ export const TopBar = ({ onToggleMenu, isMenuOpen }) => {
     
     return (
       <TopBarStyled>
+        <ToastContainer/>
         <button onClick={onToggleMenu}>
           {isMenuOpen ? <MenuStyledIcon /> : <ArrowRightStyledIcon/>}
         </button>

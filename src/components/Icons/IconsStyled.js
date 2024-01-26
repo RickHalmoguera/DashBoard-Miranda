@@ -113,6 +113,7 @@ export  const XCircleStyledIcon = styled(FaRegCircleXmark)`
     color: #E23428;
     width: 24px;
     height: 24px;
+    cursor: pointer;
 `
 
 export const DotsStyledIcon = styled(PiDotsThreeOutlineVerticalFill)`

@@ -30,11 +30,14 @@ export const SwiperReviews = ()=>{
       else if (commentsListStatus === "fulfilled"){
           let components = []
           commentsListData.forEach((comment) => {
+            if(!comment.is_archived){
               components.push(
                   <SwiperSlide key={comment.id} >
                     <CardReview  comment={comment}/>
                   </SwiperSlide>
               )
+            }
+            
           });
           setSpinner(false)
           setCommentsList(components)

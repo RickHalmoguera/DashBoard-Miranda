@@ -65,7 +65,6 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
 
   const FormatDate = (date) => {
     const inputDate = new Date(date);
-
     const formatedDate = `${inputDate
       .getDate()
       .toString()
