@@ -1,4 +1,4 @@
-import { PaginationContainerStyled, PaginationText, TableStyled, TableUserBtn, TableUserImg, TableUsersStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdStyled, TdSubText, TdText, TdUserCardStyled, TrHeadStyled, TrStyled, UserNotFoundContainer, UserNotFoundText } from './TableStyled';
+import { PaginationContainerStyled, PaginationText, TableUserBtn, TableUserImg, TableUsersStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdSubText, TdText, TdUserCardStyled, TrHeadStyled, TrStyled } from './TableStyled';
 import { DotsStyledIcon, PhoneStyledIcon } from '../../components/Icons/IconsStyled';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsersData, getUsersError, getUsersStatus } from '../../features/users/usersSlice';
@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { getUsersListFromAPIThunk } from '../../features/users/usersThunk';
 import { useNavigate } from 'react-router-dom';
 import { ButtonStyled } from '../Button/ButtonStyled';
-
+import { getTheme } from "../../features/theme/themeSlice"
 
 export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
   const dispatch = useDispatch()
@@ -16,7 +16,8 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
   const usersListStatus = useSelector(getUsersStatus)
   const [spinner, setSpinner] = useState(true)
   const [filteredUsersList, setFilteredUsersList] = useState([])
-  
+  const themeData = useSelector(getTheme)
+  const theme = themeData? "dark" : "light"
   
   const itemsPerPage = 6;
   const [currentPage, setCurrentPage] = useState(1)
@@ -79,15 +80,11 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
       setCurrentPage(1)
     }
 
+
   },[dispatch, usersListData, usersListStatus, FilterOption,selectedSortOption, SearchName])
 
   return (
     <>
-      <UserNotFoundContainer>
-        {filteredUsersList.length === 0 && (
-          <UserNotFoundText>No users found.</UserNotFoundText>
-        )}
-      </UserNotFoundContainer>
       <TableUsersStyled>
         <thead>
           <tr>
