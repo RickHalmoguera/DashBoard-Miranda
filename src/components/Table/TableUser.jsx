@@ -32,19 +32,13 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
 
   const FormatDate = (date) => {
     const inputDate = new Date(date);
-
     const formatedDate = `${inputDate
       .getDate()
       .toString()
       .padStart(2, "0")}-${(inputDate.getMonth() + 1)
       .toString()
       .padStart(2, "0")}-${inputDate.getFullYear()} 
-    ${inputDate.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    })}`;
-
+    ` 
     return formatedDate;
   };
 
@@ -66,8 +60,9 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
      
       if (SearchName) {
         const searchNameLowerCase = SearchName.toLowerCase();
-        newFilteredUsersList = newFilteredUsersList.filter((user) => user.name.toLowerCase().includes(searchNameLowerCase));
+        newFilteredUsersList = newFilteredUsersList.filter((user) => user.first_name.toLowerCase().includes(searchNameLowerCase));
       }
+      
       
       if (selectedSortOption === "newest") {
         newFilteredUsersList.sort((a, b) => new Date(b.date) - new Date(a.startDate));
@@ -97,18 +92,18 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
         </thead>
         <tbody>
           {displayedUsers.map((user) => (
-            <TrStyled key={user._id}>
+            <TrStyled key={user.id}>
               <TdUserCardStyled>
                 <TableUserImg src={user.photo} alt="" />
                 <div>
-                    <TdHeadind>{user.name} {user.surname}</TdHeadind>
-                    <TdIdText># {user._id}</TdIdText>
+                    <TdHeadind>{user.first_name} {user.last_name}</TdHeadind>
+                    <TdIdText># {user.id}</TdIdText>
                     <TdSubText>{user.email}</TdSubText>
-                    <TdSubText>{FormatDate(user.startDate)}</TdSubText>
+                    <TdSubText>{FormatDate(user.start_date)}</TdSubText>
                 </div>
               </TdUserCardStyled>
               <td>
-                <TdText>{user.descriptionJob}</TdText>
+                <TdText>{user.description}</TdText>
               </td>
               <td>
                 <TdFlex>

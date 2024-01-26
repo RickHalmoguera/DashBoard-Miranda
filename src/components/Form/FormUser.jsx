@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { ButtonStyled } from "../Button/ButtonStyled"
-import { FormStyled, InputStyled, LabelStyled, TextAreaStyled } from "./FormStyled"
+import { BtnContainerStyled, FormStyled, InputStyled, LabelStyled, TextAreaStyled } from "./FormStyled"
 import { addUser, getUsersData, getUsersStatus } from "../../features/users/usersSlice"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { getUsersListFromAPIThunk } from "../../features/users/usersThunk"
 import { useNavigate } from "react-router-dom"
 import { SelectButtonBigStyled } from "../Button/SelectButtonStyled"
+
 
 export const FormUser = ()=>{
     const navigate= useNavigate()
@@ -13,23 +14,7 @@ export const FormUser = ()=>{
     const usersListData = useSelector(getUsersData)
     const usersListStatus = useSelector(getUsersStatus)
     const [newId,setNewId]= useState(0)
-    
-
-    const FormatDate =(inputDate)=>{
-        const date = new Date(inputDate);
-
-        const day = date.getDate().toString().padStart(2, '0')
-        const monthIndex = date.getMonth();
-        const year = date.getFullYear();
-
-        const monthNames = [
-            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-        ]
-        const formattedDate = `${day}-${monthNames[monthIndex]}-${year}`
-
-        return formattedDate;
-    }
+    const formRef= useRef()
 
     useEffect(()=>{
 
@@ -47,63 +32,76 @@ export const FormUser = ()=>{
     const handleSubmit = (e)=>{
         e.preventDefault()
         const newUser ={
+            photo:"http://dummyimage.com/88x88.png/5fa2dd/ffffff",
             id: newId,
-            name:e.target.name.value,
+            first_name:e.target.first_name.value,
+            last_name: e.target.last_name.value,
             email:e.target.email.value,
-            start_date: FormatDate(e.target.start_date.value),
+            start_date:e.target.start_date.value,
+            job_title:e.target.job_title.value,
             description:e.target.description.value,
             phone: e.target.phone.value,
             is_active:e.target.is_active.value === 'true'
         }
-
+        console.log(newUser)
         dispatch(addUser(newUser))
+        navigate("/root/users")
     }
 
     const handleClear = (e)=>{
-        navigate("/root/newuser")
+        e.preventDefault()
+        formRef.current.first_name.value = ""
+        formRef.current.last_name.value = ""
+        formRef.current.email.value = ""
+        formRef.current.start_date.value = ""
+        formRef.current.description.value = ""
+        formRef.current.phone.value = ""
     }
 
 
     return(
 
-        <FormStyled onSubmit={handleSubmit}>    
-            <LabelStyled>Full Name</LabelStyled>
-            <InputStyled type="text" name="name"/>
+        <FormStyled onSubmit={handleSubmit} ref={formRef}>    
+            <LabelStyled>First Name</LabelStyled>
+            <InputStyled type="text" name="first_name" required/>
+            <LabelStyled>Last Name</LabelStyled>
+            <InputStyled type="text" name="last_name" required/>
             <LabelStyled>Job Title</LabelStyled>
-            <SelectButtonBigStyled>
+            <SelectButtonBigStyled name="job_title">
                 <option value="manager">Manager</option>
-                <option value="manager">Recepcion</option>
-                <option value="manager">Servicio Habitaciones</option>
+                <option value="manag">Recepcionist</option>
+                <option value="manager">Room Service</option>
             </SelectButtonBigStyled>
             <LabelStyled>Phone</LabelStyled>
-            <InputStyled type="text" name="phone"/>
+            <InputStyled type="text" name="phone" required/>
             <LabelStyled>Email</LabelStyled>
-            <InputStyled type="email" name="email"/>
+            <InputStyled type="email" name="email" required/>
             <LabelStyled>Start Date</LabelStyled>
-            <InputStyled type="date" name="start_date"/>
+            <InputStyled type="date" name="start_date" required/>
             <LabelStyled>Job Description</LabelStyled>
-            <TextAreaStyled  name="description" rows={4}/>
+            <TextAreaStyled  name="description" rows={4} required/>
             <LabelStyled>Status</LabelStyled>
-            <SelectButtonBigStyled name="is_active">
+            <SelectButtonBigStyled name="is_active" required>
                 <option value={true}>Active</option>
                 <option value={false}>Inactive</option>
             </SelectButtonBigStyled>
-            <LabelStyled>Password</LabelStyled> 
-            <ButtonStyled 
-            type="submit" 
-            $bg="#135846"
-            $fc="#FFF"
-            >
-                Create
-            </ButtonStyled>
-            <ButtonStyled 
-            onClick={handleClear}
-            type="submit" 
-            $bg="#E23428"
-            $fc="#FFF"
-            >
-                Clear
-            </ButtonStyled>
+            <BtnContainerStyled>
+                <ButtonStyled
+                type="submit" 
+                $bg="#135846"
+                $fc="#FFF"
+                >
+                    Create
+                </ButtonStyled>
+                <ButtonStyled 
+                type="submit"
+                onClick={handleClear}
+                $bg="#E23428"
+                $fc="#FFF"
+                >
+                    Clear
+                </ButtonStyled>
+            </BtnContainerStyled>
         </FormStyled>
        
 

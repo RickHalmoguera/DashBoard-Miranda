@@ -54,3 +54,11 @@ export const TextAreaStyled = styled.textarea `
     font-size: 1.6rem;
     color:${props =>props.theme.text}
 `
+
+export const BtnContainerStyled = styled.div `
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    margin-top: 3em;
+`
