@@ -10,7 +10,7 @@ import { MoonStyledIcon, SunStyledIcon } from "../components/Icons/IconsStyled"
 import { LoginFormContainerStyled } from "../components/LoginPage/LoginFormContainerStyled"
 import { LogoImgSolo} from "../components/Logo/LogoStyled"
 import LogoPic from "../assets/images/Logo/logo.png" 
-import { FormStyled, InputStyled, LabelStyled } from "../components/Form/FormStyled"
+import { FormLoginStyled, FormStyled, InputStyled, LabelStyled } from "../components/Form/FormStyled"
 import { ButtonFormStyled } from "../components/Button/ButtonStyled"
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -65,7 +65,7 @@ export const LoginPage = ()=>{
             <LoginImageStyled src={ themeData? LoginPhotoNight : LoginPhotoDay} alt="Hotel photo" />
             <LoginFormContainerStyled>
             <LogoImgSolo src={LogoPic} alt="Logo" />
-            <FormStyled onSubmit={handleSubmit}>
+            <FormLoginStyled onSubmit={handleSubmit}>
                 <LabelStyled>User</LabelStyled>
                 <InputStyled
                     type="email"
@@ -84,7 +84,7 @@ export const LoginPage = ()=>{
                     Login
                 </ButtonFormStyled>
                 
-            </FormStyled>
+            </FormLoginStyled>
             <ThemeSelectorAbsoluteStyled onClick={handleThemeChange}>
                 {themeData ? <SunStyledIcon /> : <MoonStyledIcon />}
             </ThemeSelectorAbsoluteStyled>

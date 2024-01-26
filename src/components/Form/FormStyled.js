@@ -11,6 +11,17 @@ export const FormStyled = styled.form`
     align-items: center;
 `
 
+export const FormLoginStyled = styled.form`
+    max-width: 25rem;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    margin:  0 auto ;
+    width: 50rem;
+    justify-content: center;
+    align-items: center;
+`
+
 export const InputStyled = styled.input`
     width: 100%;
     height: 3.5rem; 
@@ -22,6 +33,8 @@ export const InputStyled = styled.input`
     font-size: 1.6rem;
     color:${props =>props.theme.text}
 `
+
+
 
 export const LabelStyled = styled.label`
     color:${props =>props.theme.text};
