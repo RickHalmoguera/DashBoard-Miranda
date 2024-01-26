@@ -116,7 +116,6 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
             <TrHeadStyled>Customer, Email & Phone</TrHeadStyled>
             <TrHeadStyled>Comment</TrHeadStyled>
             <TrHeadStyled>Action</TrHeadStyled>
-            <TrHeadStyled></TrHeadStyled>
           </tr>
         </thead>
         <tbody>
@@ -144,11 +143,6 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
                   {comment.is_archived?"Publish":"Archive"}
                 </TableUserBtn>
               </TdBtnStyled>
-
-
-              <td>
-                <DotsStyledIcon />
-              </td>
             </TrStyled>
           ))}
         </tbody>
