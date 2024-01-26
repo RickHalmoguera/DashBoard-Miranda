@@ -19,6 +19,7 @@ const routePageMapping = {
   '/root/users': 'Users',
   '/root/edituser': 'Users > Edit Info',
   '/root/createroom': 'Rooms > Create Room',
+  '/root/users/newuser': 'Users > New User'
 };
 
 export const TopBar = ({ onToggleMenu, isMenuOpen }) => {
