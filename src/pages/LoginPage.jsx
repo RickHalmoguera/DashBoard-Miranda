@@ -10,12 +10,12 @@ import { MoonStyledIcon, SunStyledIcon } from "../components/Icons/IconsStyled"
 import { LoginFormContainerStyled } from "../components/LoginPage/LoginFormContainerStyled"
 import { LogoImgSolo} from "../components/Logo/LogoStyled"
 import LogoPic from "../assets/images/Logo/logo.png" 
-import { FormLoginStyled, FormStyled, InputStyled, LabelStyled } from "../components/Form/FormStyled"
+import { FormLoginStyled, InputStyled, LabelStyled } from "../components/Form/FormStyled"
 import { ButtonFormStyled } from "../components/Button/ButtonStyled"
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "../context/AuthContext"
-import { getLoginTokenThunk } from "../features/login/getLoginTokenThunk"
+
 
 
 export const LoginPage = ()=>{
@@ -40,7 +40,6 @@ export const LoginPage = ()=>{
             const bodyData=JSON.stringify({email:email, password : password})
             console.log(bodyData)
             login()
-            dispatch(getLoginTokenThunk(bodyData))
             navigate('/root/dashboard')
         }
     }
