@@ -9,6 +9,7 @@ export const ButtonStyled = styled.button`
     font-size: 1.4rem;
     font-weight: 600;
     color: ${props =>props.theme.buttonText};
+    cursor:pointer;
 ` 
 
 export const ButtonFormStyled = styled.button`
@@ -22,4 +23,5 @@ export const ButtonFormStyled = styled.button`
     font-size: 1.4rem;
     font-weight: 600;
     color: ${props =>props.theme.buttonText};
+
 ` 

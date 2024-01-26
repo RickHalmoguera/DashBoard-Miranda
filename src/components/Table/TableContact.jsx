@@ -14,7 +14,7 @@ import {
   TrStyled,
 } from "./TableStyled";
 
-import { DotsStyledIcon } from "../Icons/IconsStyled";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeCommentStatus,

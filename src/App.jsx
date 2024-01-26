@@ -10,6 +10,7 @@ import { ContactPage } from "./pages/ContactPage"
 import { UsersPage } from "./pages/UsersPage"
 import { useAuth } from "./context/AuthContext"
 import { NewUserPage } from "./pages/NewUserPage"
+import { FormEditUser } from "./components/Form/FormEditUser"
 
 function App() {
   const themeData = useSelector(getTheme)
@@ -26,6 +27,8 @@ function App() {
                   <Route path='/root/contact' element={<ContactPage />} />
                   <Route path='/root/users' element={<UsersPage />}/>
                   <Route path="/root/users/newuser" element={<NewUserPage/>}/>
+                  <Route path='/root/users/edituser/:id' element={<FormEditUser />} />
+
                   
               </Route>
             ) : (

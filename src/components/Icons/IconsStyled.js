@@ -23,6 +23,9 @@ import { FaPhone } from "react-icons/fa6";
 import { FaMoon } from "react-icons/fa";
 import { MdSunny } from "react-icons/md"
 
+import { FaRegTrashAlt } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
+
 const ThemeIconSharedStyle = `
     width: 100%;
     height: 100%;
@@ -41,11 +44,13 @@ const NavSharedIconStyle = `
     width: 24px;
     height: 24px;
     color:inherit;
+    cursor:pointer;
 `
 const TopBarSharedIconStyle =`
     width: 24px;
     height: 24px;
     color: #135846;
+    cursor:pointer;
 `
 
 const DashBoardSharedIconStyle =`
@@ -55,6 +60,14 @@ const DashBoardSharedIconStyle =`
     &:hover{
         color:#FFF;
     }
+    cursor:pointer;
+`
+
+export const TrashStyledBtn = styled(FaRegTrashAlt)`
+    ${TopBarSharedIconStyle}
+`
+export const EditUserBtn = styled(FaUserEdit)`
+    ${TopBarSharedIconStyle}
 `
 
 export const DashBoardStyledIcon = styled(LuLayoutDashboard)`
@@ -116,11 +129,6 @@ export  const XCircleStyledIcon = styled(FaRegCircleXmark)`
     cursor: pointer;
 `
 
-export const DotsStyledIcon = styled(PiDotsThreeOutlineVerticalFill)`
-    width: 24px;
-    height: 24px;
-    color: #6E6E6E;
-`
 
 export const PhoneStyledIcon = styled(FaPhone)`
     width: 24px;

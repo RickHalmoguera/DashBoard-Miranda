@@ -4,7 +4,7 @@ import { getUsersListFromAPIThunk } from "./usersThunk";
 const initialState= {
     data: [],
     status: 'idle',
-    error: undefined
+    error: undefined,
 }
 
 
@@ -19,8 +19,28 @@ export const UsersSlice = createSlice({
     reducers:{
     
         addUser: (state,action) => {
-        state.data = [action.payload,...state.data]
-        }
+            state.data = [action.payload,...state.data]
+        },
+
+        updateUser: (state, action) => {
+            const index = state.data.findIndex(
+              (user) => user.id === action.payload.id
+            );
+            if (index !== -1) {
+              state.data[index] = action.payload;
+            }
+        },
+
+        deleteUser:(state,action)=>{
+            const idToRemove= action.payload
+            const index = state.data.findIndex(user=> user.id === idToRemove)
+            if (index !== -1) {
+                state.data.splice(index, 1);
+            } else {
+                console.log(`User with ID ${idToRemove} not found.`);
+            }
+        },
+
     },
     extraReducers: (builder) => {
         builder.addCase(getUsersListFromAPIThunk.fulfilled, (state,action) => {
@@ -40,9 +60,7 @@ export const UsersSlice = createSlice({
     }
 });
 
-export const  {addUser} = UsersSlice.actions
-export const getUsersById = (state) => state.users.data.filter((comment) => comment.id === state.users.modalId)
-export const getUsersId = (state)  => state.users.modalId
-export const getUsersData = (state) => state.users.data;
-export const getUsersStatus = (state)=> state.users.status;
-export const getUsersError = (state) => state.users.error;
+export const {addUser, deleteUser, updateUser} = UsersSlice.actions
+export const getUsersData = (state) => state.users.data
+export const getUsersStatus = (state)=> state.users.status
+export const getUsersError = (state) => state.users.error

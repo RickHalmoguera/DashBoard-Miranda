@@ -1,7 +1,7 @@
 import { PaginationContainerStyled, PaginationText, TableUserBtn, TableUserImg, TableUsersStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdSubText, TdText, TdUserCardStyled, TrHeadStyled, TrStyled } from './TableStyled';
-import { DotsStyledIcon, PhoneStyledIcon } from '../../components/Icons/IconsStyled';
+import { EditUserBtn, PhoneStyledIcon, TrashStyledBtn } from '../../components/Icons/IconsStyled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUsersData, getUsersError, getUsersStatus } from '../../features/users/usersSlice';
+import { deleteUser,getUsersData, getUsersError, getUsersStatus } from '../../features/users/usersSlice';
 import { useEffect, useState } from 'react';
 import { getUsersListFromAPIThunk } from '../../features/users/usersThunk';
 import { useNavigate } from 'react-router-dom';
@@ -28,8 +28,15 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
-  };
+  }
 
+  const handleDeleteUser = (id)=>{
+    dispatch(deleteUser(id))
+  }
+
+  const handleEditUser = (id)=>{
+    navigate(`/root/users/edituser/${id}`)
+  }
   const FormatDate = (date) => {
     const inputDate = new Date(date);
     const formatedDate = `${inputDate
@@ -117,7 +124,10 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
                   {user.is_active  && <TableUserBtn $bg="transparent" $color="#5AD07A">ACTIVE</TableUserBtn>}
               </TdBtnStyled>
               <td>
-              <DotsStyledIcon />
+              <TdFlex>
+                <TrashStyledBtn onClick={()=>handleDeleteUser(user.id)}/>
+                <EditUserBtn onClick={()=> handleEditUser(user.id)}/>
+              </TdFlex>
               </td>
             </TrStyled>
           ))}

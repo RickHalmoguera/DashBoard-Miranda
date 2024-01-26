@@ -1,51 +1,43 @@
 import { useDispatch, useSelector } from "react-redux"
 import { ButtonStyled } from "../Button/ButtonStyled"
 import { BtnContainerStyled, FormStyled, InputStyled, LabelStyled, TextAreaStyled } from "./FormStyled"
-import { addUser, getUsersData, getUsersStatus } from "../../features/users/usersSlice"
-import { useEffect, useState, useRef } from "react"
-import { getUsersListFromAPIThunk } from "../../features/users/usersThunk"
-import { useNavigate } from "react-router-dom"
+import { useNavigate,useParams } from "react-router-dom"
 import { SelectButtonBigStyled } from "../Button/SelectButtonStyled"
+import { useEffect, useState } from "react"
+import { getUsersData, updateUser } from "../../features/users/usersSlice"
 import { toast } from 'react-toastify'
 import { getTheme } from "../../features/theme/themeSlice"
 
 
-export const FormUser = ()=>{
+export const FormEditUser = ()=>{
     const themeData = useSelector(getTheme)
     const navigate= useNavigate()
     const dispatch = useDispatch()
-    const usersListData = useSelector(getUsersData)
-    const usersListStatus = useSelector(getUsersStatus)
-    const [newId,setNewId]= useState(0)
-    const formRef= useRef()
+    const usersListData = useSelector(getUsersData);
+    const { id } = useParams()
+    const [user, setUser] = useState({
+    photo:"http://dummyimage.com/88x88.png/5fa2dd/ffffff",
+    id: "",
+    first_name: "",
+    last_name:"",
+    email: "",
+    start_date: "",
+    job_title:"",
+    description: "",
+    phone: "",
+    is_active: "",
+    })
 
-    useEffect(()=>{
 
-    if (usersListStatus === "idle") {
-        dispatch(getUsersListFromAPIThunk());
-      } else if (usersListStatus === "pending") {
-       
-      } else if (usersListStatus === "fulfilled") {
-       setNewId(usersListData.length + 1)
-       
-      }
-  
-    },[dispatch, usersListData, usersListStatus])
+    useEffect(() => {
+        const searchUser = usersListData.find((user) => user.id.toString() === id);
+        setUser(searchUser)
+        console.log(user)
+      }, [usersListData])
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        const newUser ={
-            photo:"http://dummyimage.com/88x88.png/5fa2dd/ffffff",
-            id: newId,
-            first_name:e.target.first_name.value,
-            last_name: e.target.last_name.value,
-            email:e.target.email.value,
-            start_date:e.target.start_date.value,
-            job_title:e.target.job_title.value,
-            description:e.target.description.value,
-            phone: e.target.phone.value,
-            is_active:e.target.is_active.value === 'true'
-        }
+        dispatch(updateUser(user))
         const theme = themeData? "dark" : "light"
         toast.success('User updated!', {
             position: "top-center",
@@ -57,7 +49,6 @@ export const FormUser = ()=>{
             progress: undefined,
             theme: theme,
         });
-        dispatch(addUser(newUser))
         navigate("/root/users")
     }
 
@@ -71,30 +62,35 @@ export const FormUser = ()=>{
         formRef.current.phone.value = ""
     }
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUser((prevUser) => ({ ...prevUser, [name]: value }));
+      };
+
 
     return(
 
-        <FormStyled onSubmit={handleSubmit} ref={formRef}>    
+        <FormStyled onSubmit={handleSubmit} >    
             <LabelStyled>First Name</LabelStyled>
-            <InputStyled type="text" name="first_name"  required/>
+            <InputStyled type="text" name="first_name" value={user.first_name} onChange={handleChange} required/>
             <LabelStyled>Last Name</LabelStyled>
-            <InputStyled type="text" name="last_name" required/>
+            <InputStyled type="text" name="last_name" value={user.last_name} onChange={handleChange} required/>
             <LabelStyled>Job Title</LabelStyled>
-            <SelectButtonBigStyled name="job_title">
+            <SelectButtonBigStyled name="job_title" value={user.job_title} onChange={handleChange}>
                 <option value="manager">Manager</option>
                 <option value="manag">Recepcionist</option>
                 <option value="manager">Room Service</option>
             </SelectButtonBigStyled>
             <LabelStyled>Phone</LabelStyled>
-            <InputStyled type="text" name="phone" required/>
+            <InputStyled type="text" name="phone" value={user.phone} onChange={handleChange} required/>
             <LabelStyled>Email</LabelStyled>
-            <InputStyled type="email" name="email" required/>
+            <InputStyled type="email" name="email" value={user.email} onChange={handleChange} required/>
             <LabelStyled>Start Date</LabelStyled>
-            <InputStyled type="date" name="start_date" required/>
+            <InputStyled type="date" name="start_date" value={ user.start_date.split('T')[0]} onChange={handleChange} required/>
             <LabelStyled>Job Description</LabelStyled>
-            <TextAreaStyled  name="description" rows={4} required/>
+            <TextAreaStyled  name="description" rows={4} value={user.description} onChange={handleChange} required/>
             <LabelStyled>Status</LabelStyled>
-            <SelectButtonBigStyled name="is_active" required>
+            <SelectButtonBigStyled name="is_active"  value={user.is_active} onChange={handleChange}required>
                 <option value={true}>Active</option>
                 <option value={false}>Inactive</option>
             </SelectButtonBigStyled>
@@ -104,7 +100,7 @@ export const FormUser = ()=>{
                 $bg="#135846"
                 $fc="#FFF"
                 >
-                    Create
+                    Save
                 </ButtonStyled>
                 <ButtonStyled 
                 type="submit"

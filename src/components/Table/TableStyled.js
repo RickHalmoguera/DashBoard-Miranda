@@ -54,7 +54,7 @@ export const TdStyled = styled.td`
 `
 
 export const TdFlex = styled.div`
-    width: 20rem;
+  
     display: flex;
     align-items: center;
     gap: 1em;
