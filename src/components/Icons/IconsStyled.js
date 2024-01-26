@@ -133,5 +133,5 @@ export  const XCircleStyledIcon = styled(FaRegCircleXmark)`
 export const PhoneStyledIcon = styled(FaPhone)`
     width: 24px;
     height: 24px;
-    color: #000; 
+    color:  ${props =>props.theme.text};
 `

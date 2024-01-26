@@ -8,8 +8,7 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
         font-family: 'Poppins', sans-serif;
         font-size: 10px;
-        transition: color  0.2s ease-in, color 0.2s ease-in;
-        transition: background-color  0.2s ease-in, color 0.2s ease-in;
+     
     }
 
     #root{

@@ -32,7 +32,6 @@ export const FormEditUser = ()=>{
     useEffect(() => {
         const searchUser = usersListData.find((user) => user.id.toString() === id);
         setUser(searchUser)
-        console.log(user)
       }, [usersListData])
 
     const handleSubmit = (e)=>{
