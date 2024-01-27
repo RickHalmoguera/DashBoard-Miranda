@@ -100,15 +100,18 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
         <tbody>
           {displayedUsers.map((user) => (
             <TrStyled key={user.id}>
-              <TdUserCardStyled>
-                <TableUserImg src={user.photo} alt="" />
-                <div>
-                    <TdHeadind>{user.first_name} {user.last_name}</TdHeadind>
-                    <TdIdText># {user.id}</TdIdText>
-                    <TdSubText>{user.email}</TdSubText>
-                    <TdSubText>{FormatDate(user.start_date)}</TdSubText>
-                </div>
-              </TdUserCardStyled>
+              <td>
+                <TdUserCardStyled>
+                  <TableUserImg src={user.photo} alt="" />
+                  <div>
+                      <TdHeadind>{user.first_name} {user.last_name}</TdHeadind>
+                      <TdIdText># {user.id}</TdIdText>
+                      <TdSubText>{user.email}</TdSubText>
+                      <TdSubText>{FormatDate(user.start_date)}</TdSubText>
+                  </div>
+                </TdUserCardStyled>
+
+              </td>
               <td>
                 <TdText>{user.description}</TdText>
               </td>

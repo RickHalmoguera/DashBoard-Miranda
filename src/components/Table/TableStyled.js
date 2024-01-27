@@ -25,7 +25,7 @@ export const TableUsersStyled = styled.table`
     background-color: ${props =>props.theme.bodyBg};
 `
 
-export const TdUserCardStyled = styled.td`
+export const TdUserCardStyled = styled.div`
     width:30rem ;
     display: flex;
     gap: 1em;
