@@ -33,25 +33,11 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
     setCurrentPage(newPage);
   }
 
-  const handleDeleteUser = (id)=>{
-    dispatch(deleteUser(id))
-  }
-
-  const handleViewUser = (id)=>{
+  const handleViewRoom = (id)=>{
     navigate(`/root/rooms/room/${id}`)
   }
-  const FormatDate = (date) => {
-    const inputDate = new Date(date);
-    const formatedDate = `${inputDate
-      .getDate()
-      .toString()
-      .padStart(2, "0")}-${(inputDate.getMonth() + 1)
-      .toString()
-      .padStart(2, "0")}-${inputDate.getFullYear()} 
-    ` 
-    return formatedDate;
-  };
 
+  
   useEffect(()=>{
     let newFilteredRoomsList=[]
     if (roomsListStatus === "idle") {
@@ -60,22 +46,21 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
       setSpinner(true);
     } else if (roomsListStatus === "fulfilled") {
       
-      if(FilterOption ==="active"){
-        newFilteredRoomsList = roomsListData.filter((room) => room.is_active === true )
-      }else if(FilterOption ==="inactive"){
-        newFilteredRoomsList = roomsListData.filter((room) => room.is_active === false )
+      if(FilterOption ==="available"){
+        newFilteredRoomsList = roomsListData.filter((room) => room.status === "available" )
+      }else if(FilterOption ==="booked"){
+        newFilteredRoomsList = roomsListData.filter((room) => room.status === "booked" )
       }else{
         newFilteredRoomsList = [...roomsListData]
       }
      
-      
-      
       if (selectedSortOption === "status") {
-        newFilteredRoomsList.sort((a, b) => b.status- a.status)
+        newFilteredRoomsList.sort((a, b) => a.status.localeCompare(b.status))
       }else if (selectedSortOption === "price") {
-        newFilteredRoomsList.sort((a, b) => b.priceNight - a.priceNight)
+        newFilteredRoomsList.sort((a, b) => b.price_night - a.price_night)
       }
 
+      console.log(selectedSortOption)
       setFilteredRoomsList(newFilteredRoomsList)
       setSpinner(false)
       setCurrentPage(1)
@@ -120,13 +105,12 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
                 <TdText>{room.price_night}/Night</TdText>
               </td>
               <TdBtnStyled>
-                  {room.status === "booked" && <TableRoomBtn $bg="#E23428" $color="#FFF">INACTIVE</TableRoomBtn>}
-                  {room.status === "available" && <TableRoomBtn $bg="#5AD07A" $color="#FFF">ACTIVE</TableRoomBtn>}
+                  {room.status === "booked" && <TableRoomBtn $bg="#E23428" $color="#FFF">Booked</TableRoomBtn>}
+                  {room.status === "available" && <TableRoomBtn $bg="#5AD07A" $color="#FFF">Available3</TableRoomBtn>}
               </TdBtnStyled>
               <td>
               <TdFlex>
-                <EditRoomBtn   onClick={()=>handleDeleteUser(room.id)}/>
-                <ViewRoomBtn   onClick={()=> handleEditUser(room.id)}/>
+                <ViewRoomBtn   onClick={()=> handleViewRoom(room.id)}/>
               </TdFlex>
               </td>
             </TrStyled>
