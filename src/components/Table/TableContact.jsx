@@ -26,6 +26,7 @@ import {
 import { getCommentsListFromAPIThunk } from "../../features/comments/commentsThunk";
 import { ButtonStyled } from "../Button/ButtonStyled";
 import { getTheme } from "../../features/theme/themeSlice"
+import { ThreeDots } from "react-loader-spinner";
 
 export const TableContact = ({ isFiltered, selectedSortOption }) => {
   const dispatch = useDispatch()
@@ -107,6 +108,15 @@ export const TableContact = ({ isFiltered, selectedSortOption }) => {
 
   return (
     <>
+      {spinner && <ThreeDots 
+                    height="80" 
+                    width="80" 
+                    radius="9"
+                    color="#135846" 
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{ margin:"auto auto" }}
+                    visible={true}
+                    />}
       <ToastContainer/>
       <TableStyled>
         <thead>

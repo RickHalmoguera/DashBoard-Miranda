@@ -44,6 +44,14 @@ export const LabelStyled = styled.label`
     line-height: 3rem;   
 `
 
+export const RoomNumberStyled = styled.p`
+    color:${props =>props.theme.text};
+    text-align: left;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 3rem;   
+`
+
 export const TextAreaStyled = styled.textarea `
     width: 100%;
     border: 2px solid #135846;

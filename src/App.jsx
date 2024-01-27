@@ -12,6 +12,7 @@ import { RoomsPage } from "./pages/RoomsPage"
 import { useAuth } from "./context/AuthContext"
 import { NewUserPage } from "./pages/NewUserPage"
 import { FormEditUser } from "./components/Form/FormEditUser"
+import { NewRoomPage } from "./pages/NewRoomPage"
 
 function App() {
   const themeData = useSelector(getTheme)
@@ -30,6 +31,7 @@ function App() {
                   <Route path="/root/users/newuser" element={<NewUserPage/>}/>
                   <Route path='/root/users/edituser/:id' element={<FormEditUser />} />
                   <Route path='/root/rooms' element={<RoomsPage />} />
+                  <Route path='/root/rooms/newroom/' element={<NewRoomPage />} />
 
                   
               </Route>

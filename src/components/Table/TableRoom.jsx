@@ -1,15 +1,14 @@
 import { PaginationContainerStyled, PaginationText, TableUserBtn, TableUserImg, TableRoomsStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdSubText, TdText, TdUserCardStyled, TrHeadStyled, TrStyled, TableRoomImg, TdRoomCardStyled, TableRoomBtn, TdAmenitiesStyled } from './TableStyled';
-import { EditRoomBtn, EditUserBtn, PhoneStyledIcon, TrashStyledBtn, ViewRoomBtn } from '../../components/Icons/IconsStyled';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRoomsData, getRoomsError, getRoomsStatus } from '../../features/rooms/roomsSlice';
-import { useEffect, useState } from 'react';
-import { getRoomsListFromAPIThunk } from '../../features/rooms/roomsThunk';
-import { useNavigate } from 'react-router-dom';
-import { ButtonStyled } from '../Button/ButtonStyled';
+import { EditRoomBtn, EditUserBtn, PhoneStyledIcon, TrashStyledBtn, ViewRoomBtn } from '../../components/Icons/IconsStyled'
+import { useDispatch, useSelector } from 'react-redux'
+import { getRoomsData, getRoomsError, getRoomsStatus } from '../../features/rooms/roomsSlice'
+import { useEffect, useState } from 'react'
+import { getRoomsListFromAPIThunk } from '../../features/rooms/roomsThunk'
+import { useNavigate } from 'react-router-dom'
+import { ButtonStyled } from '../Button/ButtonStyled'
 import { getTheme } from "../../features/theme/themeSlice"
 import room1 from "../../assets/images/rooms/room1.jpg"
-import room2 from "../../assets/images/rooms/room2.jpg"
-import room3 from "../../assets/images/rooms/room3.jpg"
+import { ThreeDots } from 'react-loader-spinner'
 
 export const TableRoom = ({FilterOption, selectedSortOption}) => {
   const dispatch = useDispatch()
@@ -60,7 +59,7 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
         newFilteredRoomsList.sort((a, b) => b.price_night - a.price_night)
       }
 
-      console.log(selectedSortOption)
+   
       setFilteredRoomsList(newFilteredRoomsList)
       setSpinner(false)
       setCurrentPage(1)
@@ -71,6 +70,15 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
 
   return (
     <>
+       {spinner && <ThreeDots 
+                    height="80" 
+                    width="80" 
+                    radius="9"
+                    color="#135846" 
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{ margin:"auto auto" }}
+                    visible={true}
+                    />} 
       <TableRoomsStyled>
         <thead>
           <tr>
@@ -106,7 +114,7 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
               </td>
               <TdBtnStyled>
                   {room.status === "booked" && <TableRoomBtn $bg="#E23428" $color="#FFF">Booked</TableRoomBtn>}
-                  {room.status === "available" && <TableRoomBtn $bg="#5AD07A" $color="#FFF">Available3</TableRoomBtn>}
+                  {room.status === "available" && <TableRoomBtn $bg="#5AD07A" $color="#FFF">Available</TableRoomBtn>}
               </TdBtnStyled>
               <td>
               <TdFlex>
@@ -135,7 +143,7 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
           Next
         </ButtonStyled>
       </PaginationContainerStyled>
-    
+      
     </>
     
   )
