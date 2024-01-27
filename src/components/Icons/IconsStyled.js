@@ -17,7 +17,6 @@ import { RiLoginBoxLine } from "react-icons/ri";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { FaRegCircleXmark } from "react-icons/fa6";
 
-import { PiDotsThreeOutlineVerticalFill } from "react-icons/pi";
 
 import { FaPhone } from "react-icons/fa6";
 import { FaMoon } from "react-icons/fa";
@@ -25,6 +24,8 @@ import { MdSunny } from "react-icons/md"
 
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 const ThemeIconSharedStyle = `
     width: 100%;
@@ -69,6 +70,14 @@ export const TrashStyledBtn = styled(FaRegTrashAlt)`
 export const EditUserBtn = styled(FaUserEdit)`
     ${TopBarSharedIconStyle}
 `
+export const EditRoomBtn = styled(FaEdit)`
+    ${TopBarSharedIconStyle}
+`
+
+export const ViewRoomBtn = styled(FaEye)`
+    ${TopBarSharedIconStyle}
+`
+
 
 export const DashBoardStyledIcon = styled(LuLayoutDashboard)`
     ${NavSharedIconStyle}

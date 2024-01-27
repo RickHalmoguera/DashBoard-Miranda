@@ -8,6 +8,7 @@ import { DashBoardPage } from "./pages/DashBoardPage"
 import { RootPage } from "./pages/RootPage"
 import { ContactPage } from "./pages/ContactPage"
 import { UsersPage } from "./pages/UsersPage"
+import { RoomsPage } from "./pages/RoomsPage"
 import { useAuth } from "./context/AuthContext"
 import { NewUserPage } from "./pages/NewUserPage"
 import { FormEditUser } from "./components/Form/FormEditUser"
@@ -28,6 +29,7 @@ function App() {
                   <Route path='/root/users' element={<UsersPage />}/>
                   <Route path="/root/users/newuser" element={<NewUserPage/>}/>
                   <Route path='/root/users/edituser/:id' element={<FormEditUser />} />
+                  <Route path='/root/rooms' element={<RoomsPage />} />
 
                   
               </Route>

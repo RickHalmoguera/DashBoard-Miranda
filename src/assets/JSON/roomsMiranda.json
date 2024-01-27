@@ -2,9 +2,9 @@
     {
       "id": 1,
       "photos": [
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk",
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU",
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Suite",
       "room_number": "Suite-1",
@@ -33,9 +33,9 @@
     {
       "id": 2,
       "photos": [
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU",
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs",
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Single Bed",
       "room_number": "Single Bed-2",
@@ -64,9 +64,9 @@
     {
       "id": 3,
       "photos": [
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs",
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk",
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Double Bed",
       "room_number": "Double Bed-3",
@@ -95,9 +95,9 @@
     {
       "id": 4,
       "photos": [
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk",
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU",
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Double Superior",
       "room_number": "Double Superior-4",
@@ -126,9 +126,9 @@
     {
       "id": 5,
       "photos": [
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs",
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk",
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Suite",
       "room_number": "Suite-5",
@@ -157,9 +157,9 @@
     {
       "id": 6,
       "photos": [
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU",
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs",
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Single Bed",
       "room_number": "Single Bed-6",
@@ -188,9 +188,9 @@
     {
       "id": 7,
       "photos": [
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs",
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk",
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Double Bed",
       "room_number": "Double Bed-7",
@@ -219,9 +219,9 @@
     {
       "id": 8,
       "photos": [
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk",
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU",
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Double Superior",
       "room_number": "Double Superior-8",
@@ -250,9 +250,9 @@
     {
       "id": 9,
       "photos": [
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs",
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk",
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Suite",
       "room_number": "Suite-9",
@@ -281,9 +281,9 @@
     {
       "id": 10,
       "photos": [
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU",
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs",
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Single Bed",
       "room_number": "Single Bed-10",
@@ -312,9 +312,9 @@
     {
       "id": 11,
       "photos": [
-        "https://unsplash.com/photos/woman-lying-on-bed-facing-on-body-of-water-RiOhen_OLPs",
-        "https://unsplash.com/photos/white-bed-linen-with-brown-wooden-bed-frame-67-sOi7mVIk",
-        "https://unsplash.com/photos/white-ceramic-sink-near-white-ceramic-sink-g51F6-WYzyU"
+        "room1",
+        "room2",
+        "room3"
       ],
       "room_type": "Double Bed",
       "room_number": "Double Bed-11",

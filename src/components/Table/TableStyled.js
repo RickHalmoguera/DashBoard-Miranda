@@ -24,6 +24,19 @@ export const TableUsersStyled = styled.table`
     height: 50rem;
     background-color: ${props =>props.theme.bodyBg};
 `
+export const TableRoomsStyled = styled.table`
+    margin: 3em 0;
+    width: 100%;
+    min-height: 750px;
+    background-color: #FFF;
+    border-radius: 1em;
+    text-align: left;
+    padding: 1em;
+    border-spacing: 1rem 2em;
+    height: 50rem;
+    background-color: ${props =>props.theme.bodyBg};
+`
+
 
 export const TdUserCardStyled = styled.div`
     width:30rem ;
@@ -37,13 +50,26 @@ export const TdUserCardStyled = styled.div`
     }
 
 `
+export const TdRoomCardStyled = styled.td` 
+    
+    display: flex;
+    gap: 1em;
+    align-items: center;
+`
 export const TableUserImg = styled.img`
     width: 5.6rem;
     height: 5.6rem;
     border-radius: 1em;
 `
 
+export const TableRoomImg = styled.img`
+    width: 15rem;
+    height: 8rem;
+    border-radius: 1em;
+`
+
 export const TrStyled = styled.tr `
+    
     &:hover{
         box-shadow: 0px 4px 30px #0000001A
     }
@@ -61,6 +87,10 @@ export const TdFlex = styled.div`
 `
 export const TdBtnStyled = styled.td`
     width: 100px;
+`
+
+export const TdAmenitiesStyled = styled.td`
+    width: 500px;
 `
 
 export const TrHeadStyled = styled.th `
@@ -112,6 +142,21 @@ export const TableUserBtn = styled.button`
     color: ${({$color})=> $color};
     text-align: left;
     cursor: pointer;
+`
+
+export const TableRoomBtn = styled.button`
+    width: 100px   ;
+    padding: 1em .5em;
+    border: none;
+    border-radius: 8px;
+    height: 3.5rem;
+    background-color:${({$bg})=> $bg};
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: ${({$color})=> $color};
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 export const PaginationContainerStyled = styled.div`
     display: flex;
