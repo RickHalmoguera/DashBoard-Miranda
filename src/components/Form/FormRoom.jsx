@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { ButtonStyled } from "../Button/ButtonStyled"
-import { BtnContainerStyled, FormStyled, InputStyled, LabelStyled, RoomNumberStyled, TextAreaStyled } from "./FormStyled"
+import { BtnContainerStyled, FormFlexStyled, FormStyled, InputStyled, LabelStyled, RoomNumberStyled, TextAreaStyled } from "./FormStyled"
 import { useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import { SelectButtonBigStyled } from "../Button/SelectButtonStyled"
+import { SelectButtonBigStyled, SelectButtonMultipleStyled } from "../Button/SelectButtonStyled"
 import { toast } from 'react-toastify'
 import { getTheme } from "../../features/theme/themeSlice"
-import { getRoomsData, getRoomsStatus } from "../../features/rooms/roomsSlice"
+import { addRoom, getRoomsData, getRoomsStatus } from "../../features/rooms/roomsSlice"
 import { getRoomsListFromAPIThunk } from "../../features/rooms/roomsThunk"
 
 
@@ -16,9 +16,9 @@ export const FormRoom = ()=>{
     const dispatch = useDispatch()
     const roomsListData = useSelector(getRoomsData)
     const roomsListStatus = useSelector(getRoomsStatus)
-    const [newId,setNewId]= useState(0)
+    const [newId,setNewId]= useState(12)
     const formRef= useRef()
-    const [roomNumber, setRoomNumber] = useState(`Single Bed 12`)
+    const [roomNumber, setRoomNumber] = useState(`Single Bed-${newId}`)
 
     useEffect(()=>{
 
@@ -28,25 +28,28 @@ export const FormRoom = ()=>{
        
       } else if (roomsListStatus === "fulfilled") {
        setNewId(roomsListData.length + 1)
-       
+    
       }
   
     },[dispatch, roomsListData, roomsListStatus])
 
     const handleSubmit = (e)=>{
         e.preventDefault()
+        const selectedAmenities = Array.from(e.target.amenities.options)
+        .filter(option => option.selected)
+        .map(option => option.value)
         const newRoom ={
             id: newId,
             photos:["room1","room2","room3"],
             room_type:e.target.room_type.value,
-            room_number: e.target.room_number.value,
+            room_number: roomNumber,
             description:e.target.description.value,
             offer:e.target.offer.value === 'true',
-            price_night:e.tarprice_night.value,
+            price_night:e.target.price_night.value,
             discount:e.target.discount.value,
             cancellation: e.target.cancellation.value,
-            amenities:e.target.amenities.value,
-            status:e.target.status.value
+            amenities:selectedAmenities,
+            status:"available"
         }
         const theme = themeData? "dark" : "light"
         toast.success('User updated!', {
@@ -59,8 +62,9 @@ export const FormRoom = ()=>{
             progress: undefined,
             theme: theme,
         });
-        dispatch(addUser(newUser))
-        navigate("/root/users")
+        dispatch(addRoom(newRoom))
+        console.log(newRoom)
+        navigate("/root/rooms")
     }
 
     const handleClear = (e)=>{
@@ -70,19 +74,7 @@ export const FormRoom = ()=>{
         formRef.current.price_night.value = ""
         formRef.current.discount.value = ""
         formRef.current.cancellation.value = ""
-        formRef.current.amenities1.value = ""
-        formRef.current.amenities2.value = ""
-        formRef.current.amenities3.value = ""
-        formRef.current.amenities4.value = ""
-        formRef.current.amenities5.value = ""
-        formRef.current.amenities6.value = ""
-        formRef.current.amenities7.value = ""
-        formRef.current.amenities8.value = ""
-        formRef.current.amenities9.value = ""
-        formRef.current.amenities10.value = ""
-        formRef.current.amenities11.value = ""
-        formRef.current.amenities12.value = ""
-        formRef.current.amenities13.value = ""
+        formRef.current.amenities.value = ""
 
     }
 
@@ -91,7 +83,7 @@ export const FormRoom = ()=>{
 
         <FormStyled onSubmit={handleSubmit} ref={formRef}>    
             <LabelStyled>Room Type</LabelStyled>
-            <SelectButtonBigStyled name="room_type" onChange={()=>setRoomNumber(formRef.current.room_type.value + " " + newId)}>
+            <SelectButtonBigStyled name="room_type" onChange={()=>setRoomNumber(formRef.current.room_type.value + "-" + newId)}>
                 <option value="Single Bed">Single Bed</option>
                 <option value="Double Bed">Double Bed</option>
                 <option value="Double Superior">Double Superior</option>
@@ -99,30 +91,47 @@ export const FormRoom = ()=>{
             </SelectButtonBigStyled>
             <LabelStyled>Room Number</LabelStyled>
             <RoomNumberStyled>{roomNumber}</RoomNumberStyled>
-            <LabelStyled>Job Title</LabelStyled>
-            <SelectButtonBigStyled name="job_title">
-                <option value="manager">Manager</option>
-                <option value="manag">Recepcionist</option>
-                <option value="manager">Room Service</option>
-            </SelectButtonBigStyled>
             <LabelStyled>Description</LabelStyled>
             <TextAreaStyled  name="description" rows={2} required/>
             <LabelStyled>Cancellation</LabelStyled>
             <TextAreaStyled  name="cancellation" rows={2} required/>
-            <LabelStyled>Offer</LabelStyled>
-            <SelectButtonBigStyled name="offer">
-                <option value={true}>Yes</option>
-                <option value={false}>no</option>
-            </SelectButtonBigStyled>
-            <LabelStyled>Price Night</LabelStyled>
-            <InputStyled type="number" name="price_night" min={0} required/>
-            <LabelStyled>Discount</LabelStyled>
-            <InputStyled type="number" name="discount" min={0} required/>
+            <FormFlexStyled>
+                <div>
+                    <LabelStyled>Offer</LabelStyled>
+                    <SelectButtonBigStyled name="offer" defaultValue="true">
+                        <option value={true}>Yes</option>
+                        <option value={false}>no</option>
+                </SelectButtonBigStyled>
+
+                </div>
+                <div>
+                    <LabelStyled>Price Night</LabelStyled>
+                    <InputStyled type="number" name="price_night" min={0} required/>
+
+                </div>
+                <div>
+                    <LabelStyled>Discount</LabelStyled>
+                    <InputStyled type="number" name="discount" min={0} />
+
+                </div>
+
+            </FormFlexStyled>
             <LabelStyled>Status</LabelStyled>
-            <SelectButtonBigStyled name="is_active" required>
-                <option value={true}>Active</option>
-                <option value={false}>Inactive</option>
-            </SelectButtonBigStyled>
+            <SelectButtonMultipleStyled name="amenities"  multiple required>
+                <option value="Air conditioner">Air Conditioner</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Cleaning">Cleaning</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Shop near">Shop near</option>
+                <option value="24/7 Online Suppor">24/7 Online Suppor</option>
+                <option value="Smart Security">Smart Security</option>
+                <option value="High-speed Wifi">High-speed Wifi</option>
+                <option value="Kitchen">Kitchen</option>
+                <option value="Shower">Shower</option>
+                <option value="Towels">Towels</option>
+                <option value="Strong Locker">Strong Locker</option>
+                <option value="Expert Team">Expert Team</option>
+            </SelectButtonMultipleStyled>
             <BtnContainerStyled>
                 <ButtonStyled
                 type="submit" 

@@ -70,3 +70,11 @@ export const BtnContainerStyled = styled.div `
     gap: 2em;
     margin-top: 3em;
 `
+
+export const FormFlexStyled = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    align-items: center;
+    text-align: center;
+`
