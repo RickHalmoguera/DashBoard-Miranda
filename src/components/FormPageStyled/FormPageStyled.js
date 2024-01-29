@@ -5,7 +5,8 @@ export const FormPageStyled = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     gap: 2em;
     background-color: ${props =>props.theme.rootBg};
 `
