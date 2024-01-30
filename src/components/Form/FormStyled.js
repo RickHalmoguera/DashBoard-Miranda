@@ -9,6 +9,7 @@ export const FormStyled = styled.form`
     width: 50rem;
     justify-content: center;
     align-items: center;
+    
 `
 
 export const FormLoginStyled = styled.form`
@@ -77,4 +78,9 @@ export const FormFlexStyled = styled.div`
     gap: 2em;
     align-items: center;
     text-align: center;
+    
+`
+
+export const FormOptionStyled = styled.option`
+   font-size: 1.5rem;
 `

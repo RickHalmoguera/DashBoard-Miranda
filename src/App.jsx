@@ -14,6 +14,7 @@ import { NewUserPage } from "./pages/NewUserPage"
 import { FormEditUser } from "./components/Form/FormEditUser"
 import { NewRoomPage } from "./pages/NewRoomPage"
 import { ViewRoomPage } from "./pages/ViewRoomPage"
+import { EditUserPage } from "./pages/EditUserPage"
 
 function App() {
   const themeData = useSelector(getTheme)
@@ -30,7 +31,7 @@ function App() {
                   <Route path='/root/contact' element={<ContactPage />} />
                   <Route path='/root/users' element={<UsersPage />}/>
                   <Route path="/root/users/newuser" element={<NewUserPage/>}/>
-                  <Route path='/root/users/edituser/:id' element={<FormEditUser />} />
+                  <Route path='/root/users/edituser/:id' element={<EditUserPage />} />
                   <Route path='/root/rooms' element={<RoomsPage />} />
                   <Route path='/root/rooms/newroom/' element={<NewRoomPage />} />
                   <Route path='/root/rooms/room/:id' element={<ViewRoomPage />} />

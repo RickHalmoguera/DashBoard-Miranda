@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { ButtonStyled } from "../Button/ButtonStyled"
-import { BtnContainerStyled, FormFlexStyled, FormStyled, InputStyled, LabelStyled, RoomNumberStyled, TextAreaStyled } from "./FormStyled"
+import { BtnContainerStyled, FormFlexStyled, FormOptionStyled, FormStyled, InputStyled, LabelStyled, RoomNumberStyled, TextAreaStyled } from "./FormStyled"
 import { useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { SelectButtonBigStyled, SelectButtonMultipleStyled } from "../Button/SelectButtonStyled"
@@ -52,7 +52,7 @@ export const FormRoom = ()=>{
             status:"available"
         }
         const theme = themeData? "dark" : "light"
-        toast.success('User updated!', {
+        toast.success('Room created!', {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,
@@ -69,12 +69,12 @@ export const FormRoom = ()=>{
 
     const handleClear = (e)=>{
         e.preventDefault()
-        formRef.current.room_number.value = ""
+        formRef.current.room_type.value = "Single Bed"
         formRef.current.description.value = ""
         formRef.current.price_night.value = ""
         formRef.current.discount.value = ""
         formRef.current.cancellation.value = ""
-        formRef.current.amenities.value = ""
+        setRoomNumber(formRef.current.room_type.value + "-" + newId)
 
     }
 
@@ -118,19 +118,19 @@ export const FormRoom = ()=>{
             </FormFlexStyled>
             <LabelStyled>Status</LabelStyled>
             <SelectButtonMultipleStyled name="amenities"  multiple required>
-                <option value="Air conditioner">Air Conditioner</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Cleaning">Cleaning</option>
-                <option value="Grocery">Grocery</option>
-                <option value="Shop near">Shop near</option>
-                <option value="24/7 Online Suppor">24/7 Online Suppor</option>
-                <option value="Smart Security">Smart Security</option>
-                <option value="High-speed Wifi">High-speed Wifi</option>
-                <option value="Kitchen">Kitchen</option>
-                <option value="Shower">Shower</option>
-                <option value="Towels">Towels</option>
-                <option value="Strong Locker">Strong Locker</option>
-                <option value="Expert Team">Expert Team</option>
+                <FormOptionStyled value="Air conditioner">Air Conditioner</FormOptionStyled>
+                <FormOptionStyled value="Breakfast">Breakfast</FormOptionStyled>
+                <FormOptionStyled value="Cleaning">Cleaning</FormOptionStyled>
+                <FormOptionStyled value="Grocery">Grocery</FormOptionStyled>
+                <FormOptionStyled value="Shop near">Shop near</FormOptionStyled>
+                <FormOptionStyled value="24/7 Online Suppor">24/7 Online Suppor</FormOptionStyled>
+                <FormOptionStyled value="Smart Security">Smart Security</FormOptionStyled>
+                <FormOptionStyled value="High-speed Wifi">High-speed Wifi</FormOptionStyled>
+                <FormOptionStyled value="Kitchen">Kitchen</FormOptionStyled>
+                <FormOptionStyled value="Shower">Shower</FormOptionStyled>
+                <FormOptionStyled value="Towels">Towels</FormOptionStyled>
+                <FormOptionStyled value="Strong Locker">Strong Locker</FormOptionStyled>
+                <FormOptionStyled value="Expert Team">Expert Team</FormOptionStyled>
             </SelectButtonMultipleStyled>
             <BtnContainerStyled>
                 <ButtonStyled
