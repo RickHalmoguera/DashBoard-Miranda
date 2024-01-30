@@ -1,4 +1,4 @@
-import { PaginationContainerStyled, PaginationText, TableRoomsStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdText, TrHeadStyled, TrStyled, TableRoomImg, TdRoomCardStyled, TableRoomBtn, TdAmenitiesStyled } from './TableStyled';
+import { PaginationContainerStyled, PaginationText, TableRoomsStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdText, TrHeadStyled, TrStyled, TableRoomImg, TdRoomCardStyled, TableRoomBtn, TdAmenitiesStyled, TrHeadStyledCentered, TdSpan } from './TableStyled';
 import { ViewRoomBtn } from '../../components/Icons/IconsStyled'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRoomsData, getRoomsError, getRoomsStatus } from '../../features/rooms/roomsSlice'
@@ -87,7 +87,7 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
             <TrHeadStyled>Amenities</TrHeadStyled>
             <TrHeadStyled>Price</TrHeadStyled>
             <TrHeadStyled>Status</TrHeadStyled>
-            <TrHeadStyled>Action</TrHeadStyled>
+            <TrHeadStyledCentered>Action</TrHeadStyledCentered>
           </tr>
         </thead>
         <tbody>
@@ -110,7 +110,7 @@ export const TableRoom = ({FilterOption, selectedSortOption}) => {
                 <TdText>{room.amenities.join(", ")}</TdText>
               </TdAmenitiesStyled>
               <td>
-                <TdText>{room.price_night}/Night</TdText>
+                <TdText>${room.price_night} <TdSpan>/Night</TdSpan></TdText>
               </td>
               <TdBtnStyled>
                   {room.status === "booked" && <TableRoomBtn $bg="#E23428" $color="#FFF">Booked</TableRoomBtn>}

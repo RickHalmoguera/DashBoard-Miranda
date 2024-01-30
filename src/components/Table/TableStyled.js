@@ -102,6 +102,14 @@ export const TrHeadStyled = styled.th `
     color: ${props =>props.theme.headingText};
     
 `
+export const TrHeadStyledCentered = styled.th `
+    font-size: 1.4rem;
+    font-weight: 600;
+    border-bottom: 2px solid #F5F5F5;
+    padding-bottom:1em ;
+    text-align: center;
+    color: ${props =>props.theme.headingText};
+`
 
 export const TdHeadind = styled.p `
     font-size: 1.4rem;
@@ -118,6 +126,13 @@ export const TdText = styled.p `
     color: ${props =>props.theme.text};
     max-width:800px;
 `
+export const TdSpan = styled.span`
+font-size: 1.4rem;
+font-weight: 400;
+line-height: 2.5rem;
+color: ${props =>props.theme.idText};
+max-width:800px;
+`
 
 export const TdSubText = styled.p`
     font-size: 1.2rem;
@@ -132,6 +147,8 @@ export const TdIdText = styled.p`
     line-height: 2.1rem;
     color: ${props =>props.theme.idText};
 `
+
+
 
 export const TableUserBtn = styled.button`
     border: none;

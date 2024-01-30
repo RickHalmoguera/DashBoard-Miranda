@@ -7,6 +7,7 @@ import { getUsersListFromAPIThunk } from '../../features/users/usersThunk';
 import { useNavigate } from 'react-router-dom';
 import { ButtonStyled } from '../Button/ButtonStyled';
 import { getTheme } from "../../features/theme/themeSlice"
+import { ThreeDots } from 'react-loader-spinner';
 
 export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
   const dispatch = useDispatch()
@@ -74,7 +75,7 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
       if (selectedSortOption === "newest") {
         newFilteredUsersList.sort((a, b) => new Date(b.date) - new Date(a.startDate));
       }else if (selectedSortOption === "abc") {
-        newFilteredUsersList.sort((a, b) => a.name.localeCompare(b.name))
+        newFilteredUsersList.sort((a, b) => a.first_name.localeCompare(b.name))
       }
 
       setFilteredUsersList(newFilteredUsersList)
@@ -87,6 +88,15 @@ export const TableUser = ({FilterOption, selectedSortOption, SearchName}) => {
 
   return (
     <>
+     {spinner && <ThreeDots 
+                    height="80" 
+                    width="80" 
+                    radius="9"
+                    color="#135846" 
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{ margin:"auto auto" }}
+                    visible={true}
+                    />}
       <TableUsersStyled>
         <thead>
           <tr>

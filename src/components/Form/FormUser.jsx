@@ -73,7 +73,6 @@ export const FormUser = ()=>{
 
 
     return(
-
         <FormStyled onSubmit={handleSubmit} ref={formRef}>    
             <LabelStyled>First Name</LabelStyled>
             <InputStyled type="text" name="first_name"  required/>
