@@ -27,12 +27,11 @@ export const lightTheme ={
     body: '#FFFFFF',
     text: '#4E4E4E',
     buttonText:"#135846",
-    subText: '#393939',
+    subText: '#6E6E6E',
     liText: '#799283',
     liTextHighLight: '#E23428',
     headingText: '#212121',
     idText:'#799283'
-
 }
 
 export const darkTheme ={

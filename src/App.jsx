@@ -13,6 +13,7 @@ import { useAuth } from "./context/AuthContext"
 import { NewUserPage } from "./pages/NewUserPage"
 import { FormEditUser } from "./components/Form/FormEditUser"
 import { NewRoomPage } from "./pages/NewRoomPage"
+import { ViewRoomPage } from "./pages/ViewRoomPage"
 
 function App() {
   const themeData = useSelector(getTheme)
@@ -32,6 +33,8 @@ function App() {
                   <Route path='/root/users/edituser/:id' element={<FormEditUser />} />
                   <Route path='/root/rooms' element={<RoomsPage />} />
                   <Route path='/root/rooms/newroom/' element={<NewRoomPage />} />
+                  <Route path='/root/rooms/room/:id' element={<ViewRoomPage />} />
+                  
 
                   
               </Route>

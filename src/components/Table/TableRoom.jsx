@@ -1,5 +1,5 @@
-import { PaginationContainerStyled, PaginationText, TableUserBtn, TableUserImg, TableRoomsStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdSubText, TdText, TdUserCardStyled, TrHeadStyled, TrStyled, TableRoomImg, TdRoomCardStyled, TableRoomBtn, TdAmenitiesStyled } from './TableStyled';
-import { EditRoomBtn, EditUserBtn, PhoneStyledIcon, TrashStyledBtn, ViewRoomBtn } from '../../components/Icons/IconsStyled'
+import { PaginationContainerStyled, PaginationText, TableRoomsStyled, TdBtnStyled, TdFlex, TdHeadind, TdIdText, TdText, TrHeadStyled, TrStyled, TableRoomImg, TdRoomCardStyled, TableRoomBtn, TdAmenitiesStyled } from './TableStyled';
+import { ViewRoomBtn } from '../../components/Icons/IconsStyled'
 import { useDispatch, useSelector } from 'react-redux'
 import { getRoomsData, getRoomsError, getRoomsStatus } from '../../features/rooms/roomsSlice'
 import { useEffect, useState } from 'react'
