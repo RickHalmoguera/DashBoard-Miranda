@@ -39,10 +39,10 @@ export const TopBar = ({ onToggleMenu, isMenuOpen }) => {
       '/root/rooms': 'Rooms',
       '/root/contact': 'Contact',
       '/root/users': 'Users',
-      '/root/createroom': 'Rooms > Create Room',
-      [`/root/rooms/room/${id}`]: `Bookings > View Room # ${id}`,
       '/root/users/newuser': 'Users > New User',
-      [`/root/users/user/${id}`]: `Users > Edit User # ${id}`,
+      '/root/rooms/newroom': 'Rooms > Create Room',
+      [`/root/rooms/room/${id}`]: `Rooms > View Room # ${id}`,
+      [`/root/users/edituser/${id}`]: `Users > Edit User # ${id}`,
       '/root/bookings': 'Bookings',
       [`/root/bookings/booking/${id}`]: `Bookings > View Booking # ${id}`
     };
