@@ -8,28 +8,21 @@ import { MoonStyledIcon, SunStyledIcon } from "../Icons/IconsStyled"
 import { ThemeSelectorStyled } from "../ThemeSelector/ThemeSelectorStyled";
 import { useAuth } from "../../context/AuthContext";
 import { ToastContainer } from 'react-toastify'
+import { useParams } from "react-router-dom"
 
 
-const routePageMapping = {
-  '/': 'Login',
-  '/root/dashboard': 'Dashboard',
-  '/root/booking': 'Booking',
-  '/root/rooms': 'Rooms',
-  '/root/contact': 'Contact',
-  '/root/users': 'Users',
-  '/root/createroom': 'Rooms > Create Room',
-  '/root/users/newuser': 'Users > New User',
-  '/root/users/edituser': 'Users > Edit Info'
-};
+
+
 
 export const TopBar = ({ onToggleMenu, isMenuOpen }) => {
+  const { id } = useParams()
     const { logout } = useAuth();
     const themeData = useSelector(getTheme)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const location = useLocation();
     const { pathname } = location;
-    const currentPage = routePageMapping[pathname] || 'Unknown Page';
+    
     const handleThemeChange = () => {
       dispatch(changeTheme())
     }
@@ -38,7 +31,23 @@ export const TopBar = ({ onToggleMenu, isMenuOpen }) => {
         logout()
         navigate("/")
     }
+
+    const routePageMapping = {
+      '/': 'Login',
+      '/root/dashboard': 'Dashboard',
+      '/root/booking': 'Booking',
+      '/root/rooms': 'Rooms',
+      '/root/contact': 'Contact',
+      '/root/users': 'Users',
+      '/root/createroom': 'Rooms > Create Room',
+      [`/root/rooms/room/${id}`]: `Bookings > View Room # ${id}`,
+      '/root/users/newuser': 'Users > New User',
+      [`/root/users/user/${id}`]: `Users > Edit User # ${id}`,
+      '/root/bookings': 'Bookings',
+      [`/root/bookings/booking/${id}`]: `Bookings > View Booking # ${id}`
+    };
     
+    const currentPage = routePageMapping[pathname] || 'Unknown Page';
     return (
       <TopBarStyled>
         <ToastContainer/>
