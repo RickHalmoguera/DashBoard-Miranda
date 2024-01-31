@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { ButtonNotesStyled, ButtonStyled } from '../Button/ButtonStyled'
 import { getTheme } from "../../features/theme/themeSlice"
 import { ThreeDots } from 'react-loader-spinner'
-import { getBookingsData, getBookingsError, getBookingsStatus } from '../../features/bookings/bookingsSlice';
+import { getBookingsData, getBookingsError, getBookingsStatus, setModalBookingId } from '../../features/bookings/bookingsSlice';
 import { getBookingsListFromAPIThunk } from '../../features/bookings/bookingsThunk';
 import { getRoomsListFromAPIThunk } from '../../features/rooms/roomsThunk';
 import { getRoomsData } from '../../features/rooms/roomsSlice';
@@ -70,6 +70,11 @@ export const TableBookings = ({FilterOption, selectedSortOption}) => {
 
     return room.room_type
   }
+
+  const openModal = (bookingId) => {
+    dispatch(setModalBookingId(bookingId))
+    
+};
   useEffect(()=>{
     let newFilteredBookingsList=[]
     if (bookingsListStatus === "idle") {
@@ -156,7 +161,7 @@ export const TableBookings = ({FilterOption, selectedSortOption}) => {
                 <TdText>{checkOut(booking.status,booking.date_out)}</TdText>
               </td>
               <TdBtnStyled>
-                  <ButtonNotesStyled disabled={booking.notes === null}>Notes</ButtonNotesStyled>
+                  <ButtonNotesStyled disabled={booking.notes === null} onClick={()=>openModal(booking.id)}>Notes</ButtonNotesStyled>
               </TdBtnStyled>
               <td>
                 <TdText>{getRoomType(booking.id)}</TdText>

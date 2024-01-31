@@ -8,10 +8,13 @@ import { Modal } from "../components/Modal/Modal";
 import { SideMenu } from "../components/SideMenu/SideMenu";
 import { FlexColumnStyled } from "../components/RootPage/FlexColumnStyled";
 import { TopBar } from "../components/TopBar/TopBar";
+import { getBookingId } from "../features/bookings/bookingsSlice";
+import { ModalNotes } from "../components/Modal/ModalNotes";
 
 export const RootPage = () =>{
     const [isMenuOpen, setIsMenuOpen] = useState(true)
     const modalOpen = useSelector(getCommentId)
+    const modalNotesOpen = useSelector(getBookingId)
     const toggleMenu = () => {
       setIsMenuOpen(!isMenuOpen)
     }
@@ -20,6 +23,7 @@ export const RootPage = () =>{
     return(
         <RootStyled>
             {modalOpen != undefined? <Modal/> : ""}
+            {modalNotesOpen != undefined? <ModalNotes/> : ""}
             <SideMenu isVisible={isMenuOpen}/>
             <FlexColumnStyled>
                 <TopBar onToggleMenu={toggleMenu} isMenuOpen={isMenuOpen}/>

@@ -13,7 +13,10 @@ export const BookingsSlice = createSlice({
     name: "bookings",
     initialState:initialState,
     reducers:{
-       
+        setModalBookingId: (state,action) => {
+            console.log(action.payload)
+            state.modalId = action.payload
+            },
     },
     extraReducers: (builder) => {
         builder.addCase(getBookingsListFromAPIThunk.fulfilled, (state,action) => {
@@ -30,8 +33,9 @@ export const BookingsSlice = createSlice({
         })
     }
 });
-
+export const {setModalBookingId} = BookingsSlice.actions
 export const getBookingId = (state)  => state.bookings.modalId
+export const getBookingById = (state) => state.bookings.data.filter((booking) => booking.id === state.bookings.modalId)
 export const getBookingsData = (state) => state.bookings.data;
 export const getBookingsStatus = (state)=> state.bookings.status;
 export const getBookingsError = (state) => state.bookings.error;
