@@ -56,6 +56,14 @@ export const TdRoomCardStyled = styled.td`
     gap: 1em;
     align-items: center;
 `
+export const TdBookingCardStyled = styled.div` 
+    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1em;
+    
+`
 export const TableUserImg = styled.img`
     width: 5.6rem;
     height: 5.6rem;
@@ -160,6 +168,18 @@ export const TableUserBtn = styled.button`
     color: ${({$color})=> $color};
     text-align: left;
     cursor: pointer;
+`
+
+export const TableBookingBtn = styled.button`
+    width: 120px;
+    border: none;
+    border-radius: 8px;
+    height: 3.5rem;
+    background-color:${({$bg})=> $bg};
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: ${({$color})=> $color};
+    text-align: center;
 `
 
 export const TableRoomBtn = styled.button`

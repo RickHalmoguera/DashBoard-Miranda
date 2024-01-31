@@ -31,7 +31,8 @@ export const lightTheme ={
     liText: '#799283',
     liTextHighLight: '#E23428',
     headingText: '#212121',
-    idText:'#799283'
+    idText:'#799283',
+    disableColor:"#799283"
 }
 
 export const darkTheme ={
@@ -48,5 +49,6 @@ export const darkTheme ={
     liText: '#686868',
     liTextHighLight: '#E23428',
     headingText: '#FFFFFF',
-    idText:'#799283'
+    idText:'#799283',
+    disableColor:"#135846"
 }

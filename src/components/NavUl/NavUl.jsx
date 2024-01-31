@@ -14,7 +14,7 @@ export const NavUl = ()=>{
             </NavLiStyled>
             <NavLiStyled>
                 <NavLinkStyled 
-                to="/root/booking"
+                to="/root/bookings"
                 >
                 <BookingStyledIcon />
                     Booking
