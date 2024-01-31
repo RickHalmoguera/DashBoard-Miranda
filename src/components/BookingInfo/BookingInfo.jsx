@@ -10,9 +10,14 @@ import { BigCardFlexColumn, BigCardGrid, BigCardHeading, BigCardId, BigCardPhoto
 import { SwiperBigCard } from '../SwiperBigCard/SwiperBigCard'
 import { ThreeDots } from 'react-loader-spinner'
 import { getRoomsListFromAPIThunk } from '../../features/rooms/roomsThunk'
+import { getBookingsData, getBookingsError, getBookingsStatus } from '../../features/bookings/bookingsSlice'
+import { getBookingsListFromAPIThunk } from '../../features/bookings/bookingsThunk'
 
-export const RoomInfo = ()=>{
+export const BookingInfo = ()=>{
     const dispatch = useDispatch()
+    const bookingsListData = useSelector(getBookingsData)
+    const bookingsListError = useSelector(getBookingsError)
+    const bookingsListStatus = useSelector(getBookingsStatus)
     const roomsListData = useSelector(getRoomsData)
     const roomsListError = useSelector(getRoomsError)
     const roomsListStatus = useSelector(getRoomsStatus)
@@ -21,23 +26,54 @@ export const RoomInfo = ()=>{
     const [spinner, setSpinner] = useState(true)
     const theme = themeData? "dark" : "light"
     const [room, setRoom] = useState({})
-    const [price_discount, setPrice_discount] = useState(0);
+    const [booking, setBooking] = useState({})
+    const [price_discount, setPrice_discount] = useState(0)
     const [amenities, setAmenities] = useState([])
 
+    const FormatDate = (date) => {
+        const inputDate = new Date(date);
+        const formatedDate = `${inputDate
+          .getDate()
+          .toString()
+          .padStart(2, "0")}-${(inputDate.getMonth() + 1)
+          .toString()
+          .padStart(2, "0")}-${inputDate.getFullYear()} 
+        ${inputDate.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        })}`;
+    
+        return formatedDate;
+      }
+
+      const checkOut = (status,dateOut)=>{
+        if(status ==="in progress" || status == "check in"){
+          return "Guests still in Hotel"
+        }
+        else{
+          return FormatDate(dateOut)
+        }
+      }
+
     useEffect(() => {
-        if (roomsListStatus === "idle") {
-            dispatch(getRoomsListFromAPIThunk());
-          } else if (roomsListStatus === "pending") {
+        if (bookingsListStatus === "idle") {
+            dispatch(getRoomsListFromAPIThunk())
+            dispatch(getBookingsListFromAPIThunk())
+          } else if (bookingsListStatus === "pending") {
            
-          } else if (roomsListStatus === "fulfilled") {
-            const searchRoom = roomsListData.find((room) => room.id.toString() === id)
+          } else if (bookingsListStatus === "fulfilled") {
+            const searchBooking = bookingsListData.find((booking) => booking.id.toString() === id)
+            const searchRoom = roomsListData.find((room)=> room.id === searchBooking.room_id)
             setRoom(searchRoom)
+            setBooking(searchBooking)
+            console.log(room)
             const calculatedDiscount = (searchRoom.price_night) - (searchRoom.price_night * searchRoom.discount / 100)
             setPrice_discount(calculatedDiscount)
-            setAmenities(room.amenities)
+            setAmenities(searchRoom.amenities)
             setSpinner(false)
         }
-      }, [roomsListData,amenities,dispatch]) 
+      }, [roomsListData,amenities,dispatch,bookingsListData]) 
     return(
         <>
             {spinner && <ThreeDots
@@ -53,26 +89,25 @@ export const RoomInfo = ()=>{
             
                 <BigCardTextBoxStyled>
                     <div>
-                        <BigCardHeading>Room information</BigCardHeading>
-                        <BigCardId>ID: {room.id}</BigCardId>
+                        <BigCardHeading>{booking.first_name} {booking.last_name}</BigCardHeading>
+                        <BigCardId>ID: {booking.id}</BigCardId>
                     </div>
-                    <hr /> 
                     <BigCardGrid>
                         <BigCardFlexColumn>
-                            <BigCardSubHeading>Room Type</BigCardSubHeading> 
-                            <BigCardText>{room.room_type}</BigCardText>
+                            <BigCardSubHeading>Check in</BigCardSubHeading> 
+                            <BigCardText>{FormatDate(booking.date_in)}</BigCardText>
                         </BigCardFlexColumn>
                         <BigCardFlexColumn>
-                            <BigCardSubHeading>Room Number</BigCardSubHeading> 
+                            <BigCardSubHeading>Check out</BigCardSubHeading> 
+                            <BigCardText>{checkOut(booking.status,booking.date_out)}</BigCardText>
+                        </BigCardFlexColumn>
+                        <BigCardFlexColumn>
+                            <BigCardSubHeading>Room</BigCardSubHeading> 
                             <BigCardText>{room.room_number}</BigCardText>
                         </BigCardFlexColumn>
                         <BigCardFlexColumn>
-                            <BigCardSubHeading>Rate</BigCardSubHeading> 
-                            <BigCardText>${room.price_night}<BigCardSpan>/Night</BigCardSpan></BigCardText>
-                        </BigCardFlexColumn>
-                        <BigCardFlexColumn>
-                            <BigCardSubHeading>Rate with discount</BigCardSubHeading> 
-                            <BigCardText>{room.offer? `$${price_discount}` : "No discount available"}</BigCardText>
+                            <BigCardSubHeading>Price</BigCardSubHeading> 
+                            <BigCardText>{booking.offer? `$${price_discount}` : `$${room.price_night}`}<BigCardSpan>/Night</BigCardSpan></BigCardText>
                         </BigCardFlexColumn>
                     </BigCardGrid>
                     <hr/>

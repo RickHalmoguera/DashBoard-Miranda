@@ -14,7 +14,6 @@ export const BookingsSlice = createSlice({
     initialState:initialState,
     reducers:{
         setModalBookingId: (state,action) => {
-            console.log(action.payload)
             state.modalId = action.payload
             },
     },

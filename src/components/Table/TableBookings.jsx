@@ -35,7 +35,7 @@ export const TableBookings = ({FilterOption, selectedSortOption}) => {
   }
 
   const handleViewBooking = (id)=>{
-    navigate(`/root/bookins/booking/${id}`)
+    navigate(`/root/bookings/booking/${id}`)
   }
 
   const FormatDate = (date) => {
