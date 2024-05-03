@@ -7,7 +7,7 @@
 
 <div align="center">
   <h3>
-    <a href="[rickhalmoguera.github.io/HotelMiranda/](http://dashboadbucket.s3-website.eu-west-3.amazonaws.com/)">
+    <a href="http://dashboadbucket.s3-website.eu-west-3.amazonaws.com/">
       Demo
     </a>
      <span> | </span>
